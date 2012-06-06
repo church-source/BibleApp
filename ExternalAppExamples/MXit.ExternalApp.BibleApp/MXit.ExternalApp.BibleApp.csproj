@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEEC1E9B-17A0-4845-BF78-60E4C6A69B45}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MXit.ExternalApp.Examples.Redirect</RootNamespace>
+    <AssemblyName>MXit.ExternalApp.Examples.Redirect</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MXitExternalAppSDK">
+      <HintPath>D:\mxit api\lib\MXitExternalAppSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Sphinx.Client">
+      <HintPath>.\Sphinx.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bible\Bible.cs" />
+    <Compile Include="bible\BibleContainer.cs" />
+    <Compile Include="bible\BibleHelper.cs" />
+    <Compile Include="bible\Book.cs" />
+    <Compile Include="bible\Chapter.cs" />
+    <Compile Include="bible\daily_verse\BatchJobData.cs" />
+    <Compile Include="bible\daily_verse\DailyVerseObserver.cs" />
+    <Compile Include="bible\daily_verse\DailyVerseObservable.cs" />
+    <Compile Include="bible\daily_verse\DailyVerse.cs" />
+    <Compile Include="bible\daily_verse\FetchDailyVerseTask.cs" />
+    <Compile Include="bible\topics\Category.cs" />
+    <Compile Include="bible\topics\Topic.cs" />
+    <Compile Include="bible\topics\BibleTopicManager.cs" />
+    <Compile Include="db\VerseBookMarkTask.cs" />
+    <Compile Include="db\VerseHistoryTask.cs" />
+    <Compile Include="db\ParticipantAccessUpdateTask.cs" />
+    <Compile Include="db\ParticipantTask.cs" />
+    <Compile Include="db\MessageTask.cs" />
+    <Compile Include="db\MyFriendTask.cs" />
+    <Compile Include="friends\FriendManager.cs" />
+    <Compile Include="friends\FriendMap.cs" />
+    <Compile Include="friends\FriendRelation.cs" />
+    <Compile Include="input_handler\Bible_Handlers\ChooseFriendHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\ColourThemeHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\DailyVerseHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\TopicHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\EnterIDNotifMessageHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\NotifMessageSendHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\EnterMessageTextVerseMessageHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\EnterSubjectVerseMessageHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\VerseMessageSendHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\ReplyToVerseMessageHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\MessageThreadHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\MessageInboxHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\FriendHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\FriendRequestInputHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\FriendRequestHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\MyProfileHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\UserNameHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\SearchTestamentHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\MainMenuHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\SearchHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\ChooseSearchTypeHandler.cs" />
+    <Compile Include="input_handler\HelpMenuHandler.cs" />
+    <Compile Include="menu\MenuIDConstants.cs" />
+    <Compile Include="menu\OptionSets\BibleTopicCategoryOptionSet.cs" />
+    <Compile Include="menu\OptionSets\BibleTopicOptionSet.cs" />
+    <Compile Include="menu\OptionSets\DailyVerseOptionSet.cs" />
+    <Compile Include="menu\OptionSets\FavouriteVersesOptionSet.cs" />
+    <Compile Include="menu\OptionSets\MessageThreadMenuOptionItem.cs" />
+    <Compile Include="menu\OptionSets\MessageInboxOptionSet.cs" />
+    <Compile Include="menu\OptionSets\MyFriendsOptionSet.cs" />
+    <Compile Include="menu\OptionSets\FriendRelationMenuOptionItem.cs" />
+    <Compile Include="menu\OptionSets\MyFriendRequestOptionSet.cs" />
+    <Compile Include="menu\OptionSets\TopFavouriteVerseSectionsOptionSet.cs" />
+    <Compile Include="menu\OptionSets\SearchBookOptionSet.cs" />
+    <Compile Include="menu\OptionSets\SearchVersesOptionSet.cs" />
+    <Compile Include="screen_adapter\bible_adapters\ChooseFriendScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\DailyVerseListScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\NotifMessageSendOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\VerseMessageSendOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\MessageThreadScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\MessageInboxScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\FriendScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\FriendRequestScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\MyProfileOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\VerseListScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\MainMenuScreenOutputAdapter.cs" />
+    <Compile Include="search\BibleSearch.cs" />
+    <Compile Include="suspender_users\SuspendedRecord.cs" />
+    <Compile Include="suspender_users\SuspensionManager.cs" />
+    <Compile Include="user\BibleUserCodeCreator.cs" />
+    <Compile Include="user\UserColourTheme.cs" />
+    <Compile Include="user\UserRoleManager.cs" />
+    <Compile Include="user\UserNameManager.cs" />
+    <Compile Include="user\UserProfileCustomData.cs" />
+    <Compile Include="user_session\BookmarkVerseRecord.cs" />
+    <Compile Include="user_session\BookmarkManager.cs" />
+    <Compile Include="user_session\SearchVerseRecord.cs" />
+    <Compile Include="user_session\VerseRecord.cs" />
+    <Compile Include="util\DateUtils.cs" />
+    <Compile Include="util\ListUtils.cs" />
+    <Compile Include="util\NETBibleLoader.cs" />
+    <Compile Include="bible\NetBible.cs" />
+    <Compile Include="bible\ABible.cs" />
+    <Compile Include="bible\Testament.cs" />
+    <Compile Include="bible\Translation.cs" />
+    <Compile Include="bible\Verse.cs" />
+    <Compile Include="ConsoleApplication.cs" />
+    <Compile Include="db\DBManager.cs" />
+    <Compile Include="input_handler\AInputHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\Browse_Bible_Handler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\ShortCodeTestamentHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\UserFeedbackHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\TranslationHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\TestamentHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\VerseSection.cs" />
+    <Compile Include="input_handler\Bible_Handlers\Verse_Handler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\XInvalidVerseSection.cs" />
+    <Compile Include="input_handler\Bible_Handlers\Favourite_Verse_Menu_Handler.cs" />
+    <Compile Include="input_handler\Dyn_Menu_Handler.cs" />
+    <Compile Include="input_handler\IInputHandler.cs" />
+    <Compile Include="input_handler\InputHandlerFactory.cs" />
+    <Compile Include="input_handler\InputHandlerResult.cs" />
+    <Compile Include="input_handler\Std_Menu_Handler.cs" />
+    <Compile Include="menu\OptionSets\VerseMenuOptionItem.cs" />
+    <Compile Include="menu\DynMenuPage.cs" />
+    <Compile Include="menu\MenuDefinition.cs" />
+    <Compile Include="menu\MenuInputItem.cs" />
+    <Compile Include="menu\MenuManager.cs" />
+    <Compile Include="menu\MenuOptionItem.cs" />
+    <Compile Include="menu\MenuPage.cs" />
+    <Compile Include="menu\OptionMenuPage.cs" />
+    <Compile Include="menu\OptionSets\AMenuDynamicOptionSet.cs" />
+    <Compile Include="menu\OptionSets\BookOptionSet.cs" />
+    <Compile Include="menu\OptionSets\ChapterOptionSet.cs" />
+    <Compile Include="menu\OptionSets\TopFavouriteVersesOptionSet.cs" />
+    <Compile Include="menu\OptionSets\ShortCodeOptionSet.cs" />
+    <Compile Include="menu\OptionSets\ColourThemeOptionSet.cs" />
+    <Compile Include="menu\OptionSets\VerseHistoryOptionSet.cs" />
+    <Compile Include="menu\OptionSets\TranslationOptionSet.cs" />
+    <Compile Include="menu\OptionSets\DynListGeneratorFactory.cs" />
+    <Compile Include="menu\VerseMenuPage.cs" />
+    <Compile Include="menu\XMLMenuHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BibleAppEngine.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="screen_adapter\AScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\BrowseBibleScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\FavouriteListScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\DynScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\InputScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\IScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\OptionScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\ScreenOutputAdapterFactory.cs" />
+    <Compile Include="screen_adapter\bible_adapters\VerseScreenOutputAdapter.cs" />
+    <Compile Include="user_session\UserSession.cs" />
+    <Compile Include="user\UserProfile.cs" />
+    <Compile Include="user\UserProfileDBManager.cs" />
+    <Compile Include="user_session\TopFavouriteVerseRecord.cs" />
+    <Compile Include="user_session\FavouriteVerseManager.cs" />
+    <Compile Include="user_session\FavouriteVerseRecord.cs" />
+    <Compile Include="user_session\UserSessionManager.cs" />
+    <Compile Include="user_session\UserSessionScreenHistory.cs" />
+    <Compile Include="user_session\VerseHistory.cs" />
+    <Compile Include="user_session\VerseHistoryRecord.cs" />
+    <Compile Include="util\StringUtils.cs" />
+    <Compile Include="util\VerseRecordToInsert.cs" />
+    <Compile Include="verseMessaging\VerseMessageParticipant.cs" />
+    <Compile Include="verseMessaging\VerseMessage.cs" />
+    <Compile Include="verseMessaging\VerseMessageThread.cs" />
+    <Compile Include="verseMessaging\VerseMessagingManager.cs" />
+    <Compile Include="verseMessaging\VerseThreadManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MXit.ExternalApp\MXit.ExternalApp.csproj">
+      <Project>{C8B17660-8C1C-41D8-86F8-48996E56110B}</Project>
+      <Name>MXit.ExternalApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ColourThemes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MenuDefinition.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,14 @@
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.dll.config
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.pdb
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXitExternalAppSDK.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXitExternalAppSDK.xml
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Release\MXit.ExternalApp.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Release\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.dll.config
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Release\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Release\ResolveAssemblyReference.cache
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Release\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Release\MXit.ExternalApp.pdb

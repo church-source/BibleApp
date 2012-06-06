@@ -1,0 +1,15 @@
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.dll.config
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.pdb
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXitExternalAppSDK.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXitExternalAppSDK.xml
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Debug\MXit.ExternalApp.dll
+C:\Documents and Settings\Rowan\My Documents\Visual Studio 2010\Projects\ExternalAppExamples\MXit.ExternalApp\obj\Debug\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.dll.config
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Debug\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\obj\Debug\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp\bin\Debug\MXitExternalAppSDK.dll

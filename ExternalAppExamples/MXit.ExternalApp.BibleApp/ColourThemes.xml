@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Themes>
+  <Theme
+    theme_id ="1"
+    name ="Light"
+    background_colour = "#FFFFFF"
+    foreground_colour = "#000000"
+    link_colour       = "#21439C"
+    tip_colour        = "#E3E3E3"
+    bible_text_colour = "#000000">
+  </Theme>
+  <Theme
+  theme_id ="2"
+  name ="Dark"
+  background_colour = "#0D0D0D"
+  foreground_colour = "#DADADA"
+  link_colour       = "#9EBF60"
+  tip_colour        = "#473C45"
+  bible_text_colour = "#D7D7D7">
+  </Theme>
+  <Theme
+  theme_id ="3"
+  name ="Blue Moon"
+  background_colour = "#042029"
+  foreground_colour = "#25D9496"
+  link_colour       = "#CB4B15"
+  tip_colour        = "#473C45"
+  bible_text_colour = "#B5B5B5">
+  </Theme>
+  <Theme
+  theme_id ="4"
+  name ="Pastels on Dark"
+  background_colour = "#211E1E"
+  foreground_colour = "#DADADA"
+  link_colour       = "#6969FA"
+  tip_colour        = "#473C45"
+  bible_text_colour = "#DADADA">
+  </Theme>
+  <Theme
+  theme_id ="5"
+  name ="Citrus"
+  background_colour = "#EEE3D0"
+  foreground_colour = "#473C45"
+  link_colour       = "#FF7800"
+  tip_colour        = "#C8C5C9"
+  bible_text_colour = "#000000">
+  </Theme>
+  <Theme
+  theme_id ="6"
+  name ="Link Of Pink"
+  background_colour = "#606060"
+  foreground_colour = "#DEDEDE"
+  link_colour       = "#E3B6B6"
+  tip_colour        = "#8F8F8F"
+  bible_text_colour = "#DADADA">
+  </Theme>
+  
+
+</Themes>

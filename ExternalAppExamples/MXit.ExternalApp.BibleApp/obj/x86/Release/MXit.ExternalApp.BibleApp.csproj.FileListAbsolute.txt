@@ -1,0 +1,12 @@
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\ColourThemes.xml
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MenuDefinition.xml
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MXit.ExternalApp.Examples.Redirect.exe.config
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MXit.ExternalApp.Examples.Redirect.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MXit.ExternalApp.Examples.Redirect.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MySql.Data.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\Sphinx.Client.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Release\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Release\MXit.ExternalApp.Examples.Redirect.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Release\MXit.ExternalApp.Examples.Redirect.pdb

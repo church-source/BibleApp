@@ -1,0 +1,949 @@
+﻿<!-- NOTE!. the testament handlers are not implemented properly. should have one generic one instead of hard coded session variable in them-->
+<xml version="1.0" encoding="utf-8">
+  <MxitApp name="Bible For Mxit">
+    <Menu id ="1"
+          name="Main_Menu"
+          type ="std_page"
+          screen_adapter="MxitTestApp.MainMenuScreenOutputAdapter"
+          input_handler="MxitTestApp.MainMenuHandler">
+      <Title>Main Menu</Title>
+      <!-- the id's have to be unique-->
+      <Message>
+Hi [getUserName: ],
+
+Welcome to the BibleApp. It's been a while since we added new updates, but good news is we've added some topics for you to quickly find familiar passages in the Bible. See option 4. 
+      </Message>
+      <Option id="1" link_val="1" select_action="2">Go To Verse...</Option>
+      <Option id="2" link_val="2" select_action="13">Browse Bible</Option>
+      <Option id="3" link_val="3" select_action="3">Search Bible</Option>
+      <Option id="4" link_val="4" select_action="39_Topic_Categories">Common Bible Topics</Option>
+      <Option id="5" link_val="5" select_action="35_my_profile">My Profile</Option>
+      <Option id="6" link_val="6" select_action="16">Choose a Translation</Option>
+      <Option id="7" link_val="7" select_action="24">My Favourite Verses</Option>
+      <Option id="8" link_val="8" select_action="20">My Verse History</Option>
+      <Option id="9" link_val="9" select_action="30">The Top Favourite Verses</Option>
+      <Option id="10" link_val="10" select_action="40_daily_verses">Daily Verses</Option>
+      <Option id="11" link_val="11" select_action="22">Send us Feedback/Suggestions</Option>
+      <!--Option id="10" link_val="10" select_action="4">Help Section / About the Bible App</Option-->
+    </Menu>
+
+    <Menu id ="2"
+          name="Verse_Select"
+          type ="verse_select_page"
+          screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+          input_handler="MxitTestApp.Verse_Handler"
+          help_page = "14">
+      <Title>Verse Select</Title>
+      <Message>Please enter your verse below. Valid examples are... John 3:16, Jn 3.16, Eph 2:1-10. Click help if you stuck :). (You can use a '.' or a ':' to seperate the chapter and verse)...</Message>
+      <Input id="1" target_page="12"></Input>
+      <!--Option id="1" link_val="1" select_action="14">Help</Option-->
+    </Menu>
+
+    <!-- SEARCH TYPE MENU PAGE-->
+    <Menu id ="3"
+          name="Search_Type"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.ChooseSearchTypeHandler"
+          help_page = "3h">
+      <Title>Search Bible</Title>
+      <Message>What would you like to search?</Message>
+      <Option id="1" link_val="1" select_action="3_input">The entire Bible</Option>
+      <Option id="2" link_val="2" select_action="3_testament">A testament</Option>
+      <Option id="3" link_val="3" select_action="3_book_test">A Book</Option>
+    </Menu>
+
+    <!-- CHOOSING TESTAMENT PAGE FOR SEARCH-->
+    <Menu id ="3_testament"
+          name="Search_Bible_Testament_Select"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.SearchTestamentHandler"
+          output_var="Search_Handler.testament">
+      <Title>Search Bible</Title>
+      <Message>Please choose the testament that you would like to search...</Message>
+      <Option id="1" link_val="1" select_action="3_input">Old Testament</Option>
+      <Option id="2" link_val="2" select_action="3_input">New Testament</Option>
+    </Menu>
+
+    <!-- CHOOSING TESTAMENT PAGE FOR BOOK SEARCH-->
+    <Menu id ="3_book_test"
+          name="Search_Book_Bible_Testament_Select"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.SearchTestamentHandler"
+          output_var="Search_Handler.testament">
+      <Title>Search Bible</Title>
+      <Message>Please choose the testament of the book that you would like to search...</Message>
+      <Option id="1" link_val="1" select_action="3_book_book">Old Testament</Option>
+      <Option id="2" link_val="2" select_action="3_book_book">New Testament</Option>
+    </Menu>
+
+    <!-- CHOOSING BOOK PAGE FOR BOOK SEARCH-->
+    <Menu id ="3_book_book"
+          name="Search_Book_Bible_Book_Select"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="Search_Handler.book_name">
+      <Title>Search Bible</Title>
+      <Message>Please select the book of the [getTestamentName:Search_Handler.testament] that you would like to search (Dont forget that you can use the short codes.)....</Message>
+      <DynamicList target_page="3_input" list_generator="MxitTestApp.SearchBookOptionSet"></DynamicList>
+    </Menu>
+
+    <Menu id ="3_input"
+      name="Search_Bible"
+      type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.SearchHandler"
+       help_page = "32">
+      <Title>Search Bible</Title>
+      <Message>Please enter the words you would like to search for in [getSearchObject: ]...If you struggling to find a verse, read the Help to get more information on how the seach function works. </Message>
+      <Input id="1" target_page="33"></Input>
+    </Menu>
+
+    <!-- HELP ON SEARCH INPUT PAGE-->
+    <Menu id ="3h"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Searching the Bible</Title>
+      <Message>
+The menu that you are viewing allows you to choose if you want to search the entire Bible (note: you may get lots of results), a testament, or just one book. If you know the verse is in a particular book it's best to choose to only search this book. If you know it's in a particular Testament e.g. the New Testament, then search only that testament. You are more likely to find the verse this way.
+      </Message>
+    </Menu>
+
+
+    <!-- HELP ON SEARCH INPUT PAGE-->
+    <Menu id ="32"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Searching the Bible</Title>
+      <Message>
+The search option allows you to search for a verse.
+
+It's important to realise that this is not a topical search, or a phrase search. It's a word search. So for example if you enter 3 words, it will search the entire Bible for a verse that contains all the 3 words. A verse will be found only if it contains all of the words searched for.
+
+Hint: leave out words such as "and", "if", "the" etc. and use words that will identify your verse. For example if you wanted to search for John 3:16, the search phrase "God loved" would find it. The search will find a maximum of 15 verses, if the verse you looking for is not there try changing your search words.
+
+Remember that it will only search the current translation that you are using. Different translations use different words which convey the same meaning. This means that a certain group of search words may find a verse in one translation but not another...
+      </Message>
+    </Menu>
+
+    <!-- SEARCH RESULT PAGE-->
+    <Menu id ="33"
+          name="Search_Verses"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.VerseListScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="SearchResults.verse_from_search_results">
+      <Title>The Search Results</Title>
+      <Message>Your search returned the following results</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.SearchVersesOptionSet">
+        <EmptyListMessage>No results found. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- HELP MENU PAGE-->
+    <Menu id ="4_help_page"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>BibleApp Help</Title>
+      <Message>Follow one of the links to find out more help on that specific topic</Message>
+      <Option id="1" link_val="1" select_action="4_about_page">About the BibleApp</Option>
+      <Option id="2" link_val="2" select_action="14">Help on the Verse Select Option</Option>
+      <Option id="3" link_val="3" select_action="27">Help on using Short Codes to find a verse</Option>
+      <Option id="4" link_val="4" select_action="15">Help on the Browse Bible Option</Option>
+      <Option id="5" link_val="5" select_action="18">Help on changing the Bible Translation/Version</Option>
+      <Option id="6" link_val="6" select_action="21">Help on the My Verse History Option</Option>
+      <Option id="7" link_val="7" select_action="17">Help on the Reading Page</Option>
+      <Option id="8" link_val="8" select_action="32">Help on the Search Bible Option</Option>
+      <Option id="9" link_val="9" select_action="35_buddy_code_help">Help on the Bible buddy code</Option>
+    </Menu>
+
+    <!-- ABOUT MENU PAGE-->
+    <Menu id ="4_about_page"
+          name="About"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>About</Title>
+      <Message>
+This is a free MXit app. Many times you receive a reference to a Bible verse, but cant check what it is. With this app you have a quick way of finding a verse right here on MXit. You can read your Bible anytime, any place and while you read it send a verse or two to your friends...
+
+We not affiliated directly to MXit in anyway, we just use their platform to bring you God's Word. We do it in our spare time, outside of normal workign hours. :). So please be patient when requesting new features. or at least more understanding when you don't get it immediately :D.
+
+A common question we receive is 'Why don't we have more translations?'. Unfortunately we can't just use any translation, we need permission from the copyright owners before doing that. Thats sometimes hard to do, but we are working on it. One of our biggest dreams for the BibleApp is to have the Bible available in most if not all South African languages. 
+
+If you need a Bible in Zulu or another South African language. try the website m.bibles.co.za for a jar based Bible that you can download to your phone. If you have a smartphone try YouVersion.com. 
+
+You can also email us at info@BibleApp.za.org.
+      </Message>
+
+      <Option id="1" link_val="1" select_action="22">Send us feedback/suggestions</Option>
+    </Menu>
+
+    <!-- TO TEST SESSION VARIABLES-->
+    <Menu id ="9"
+          name="Verse_Display"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Bible Verse</Title>
+      <!-- the id's have to be unique-->
+      <Message>
+        <!--You entered the following selection = Testament: [Testament_Handler.testament_id] Book: [BookOptionSet.book_id] Chapter: [ChapterOptionSet.chapter_id] Verse: [Browse.current_verse] -->
+You chose the following [VerseHistoryOptionSet.verse_from_history]
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING BOOK PAGE-->
+    <Menu id ="10"
+          name="Browse_Bible"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="BookOptionSet.book_id">
+      <Title>Browse</Title>
+      <Message>Please choose a book of the Bible below. You can choose one below, or just send the name of the book you would like to see. You can use the short codes e.g. Jn for John. </Message>
+      <DynamicList target_page="11" list_generator="MxitTestApp.BookOptionSet"></DynamicList>
+    </Menu>
+
+    <!-- CHOOSING CHAPTER PAGE-->
+    <Menu id ="11"
+          name="Chapter_Select"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="ChapterOptionSet.chapter_id">
+      <Title>Browse</Title>
+      <Message>Please choose the chapter of [BookOptionSet.book_id] that you would like to read. You can choose one below, or just send the number that you would like to see.</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.ChapterOptionSet"></DynamicList>
+    </Menu>
+
+    <!-- CHOOSING TESTAMENT PAGE-->
+    <Menu id ="13"
+          name="Testament_Select"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.TestamentHandler"
+          output_var="Testament_Handler.testament_id">
+      <Title>Browse</Title>
+      <Message>Please choose the testament</Message>
+      <Option id="1" link_val="1" select_action="10">Old Testament</Option>
+      <Option id="2" link_val="2" select_action="10">New Testament</Option>
+    </Menu>
+
+    <!-- BROWSE BIBLE PAGE-->
+    <Menu id ="12"
+          name="Browse_View"
+          type ="std_page"
+          screen_adapter="MxitTestApp.BrowseBibleScreenOutputAdapter"
+          input_handler="MxitTestApp.Browse_Bible_Handler"
+          help_page="17">
+      <Title>The Reading Page</Title>
+      <Message>
+        <!--You chose book with book id: [BookOptionSet.book_id] and chapter with id: [ChapterOptionSet.chapter_id]-->
+      </Message>
+      <Option id="1" link_val="0" select_action="12">Previous Verse</Option>
+      <Option id="2" link_val="1" select_action="12">Next Verse</Option>
+    </Menu>
+
+    <!-- HELP ON VERSE SELECT MENU PAGE-->
+    <Menu id ="14"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Verse Select</Title>
+      <Message>
+You can access this option from the Main Menu of the App.
+This option allows you to enter a verse quickly by entering the verse key. e.g John 3:16 (you can use the short code for the book name as well e.g. John can be entered as Jn). If you want to see a whole section then you can enter the ending verse too. e.g. Ephesians 2:1-10. You can also let it span chapters e.g. Romans 7:21-8:4. Unfortunately you can only request a maximum of 30 verses at a time. Finally if you only know the book, you can just enter the name of the book and you will be shown the first verse of the first chapter in that book.
+      </Message>
+
+      To see a list of all the short codes you can use, follow the link below.
+      <Option id="1" link_val="1" select_action="27">Help on using Short Codes to find a verse</Option>
+    </Menu>
+
+    <!-- HELP ON BROWSING OPTION-->
+    <Menu id ="15"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Browse Bible Option</Title>
+      <Message>
+You can access this option from the Main Menu of the App.
+Choosing this option will take you through a series of menu options to allow you to choose the Testament, the name of the Book and the Chapter of the Scripture that you would like to see. Once you have chose then chapter it will direct you to the reading page and show you the first 5 verses of the chosen chapter.
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING CHAPTER PAGE-->
+    <Menu id ="16"
+          name="Translation_Select"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.TranslationHandler"
+          help_page="18">
+      <Title>Choosing a Translation</Title>
+      <Message>
+The [getTranslationName: ] is currently the Bible translation/version you are viewing.
+
+You may change the Bible translation by choosing a different translation from the options below.
+      </Message>
+      <Option id="1" link_val="1" select_action="19">King James Version (KJV)</Option>
+      <Option id="2" link_val="2" select_action="19">Word English Bible (WEB)</Option>
+      <Option id="3" link_val="3" select_action="19">New English Translation (NET)</Option>
+    </Menu>
+
+    <!-- HELP ON READING MENU PAGE-->
+    <Menu id ="17"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.HelpMenuHandler">
+      <Title>Help on the Reading Page</Title>
+      <Message>
+The reading page is used to read a verse or multpile verses at a time.
+Depending on how you arrived at the reading page you may be shown one verse or a few verses (up to a maximum of 30 verses at a time). From this page you can then request to see more verses by choosing the "more" option. The "more" option will show you 5 more verses after the current verse. You can also choose to see either the previous or next chapter if there is one. Choosing to see either the previous or next chapter will take you to the first verse of that chapter.
+If you are currently viewing a verse you can also jump straight to another verse by entering the verse number e.g. "5". Entering "5" will show you verse 5 if you want to see verse 5 in the same chapter.
+You can also jump to a different chapter by entering the chapter and verse. e.g. if you currently viewing John 1:1, entering "3:16" will take you to John 3:16.
+Finally you can jump to any book by just entering the new key. So if you reading John 3:16, you can enter "Rev 3:20" to go directly to the new verse from the reading page without having to go back to the verse select or the browse menu's.
+All the input methods that apply for the Verse Select page applies to the reading page. So for example you can also enter an ending verse like "Eph 2:1-10" without having to go back to the Verse Select page to request this
+      </Message>
+    </Menu>
+
+    <!-- HELP ON CHOOSING A TRANSLATION MENU PAGE-->
+    <Menu id ="18"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on choosing a translation</Title>
+      <Message>
+The Choose a Translation page allows you to change the translation of the Bible that you are viewing in the current session.
+
+By default the World English Bible Translation is chosen. However this may be changed by choosing a different translation. At the moment the following two translations are available (Information is from Wikipedia :) ):
+
+King James Version - The Authorized Version, commonly known as the King James Version, King James Bible or KJV, is an English translation by the Church of England of the Christian Bible begun in 1604 and completed in 1611.
+
+World English Bible - The World English Bible, also known as the WEB Version, is a public domain translation of the Bible that is currently in draft form. Work on the World English Bible began in 1997 and was known as the American Standard Version 1997. The New Testament is considered complete and is available in print.
+
+New English Translation - The New English Translation (NET Bible) is a free, "completely new"(not an update of another English translation) on-line English translation of the Bible, sponsored by the Biblical Studies Foundation and published by Biblical Studies Press.
+      </Message>
+    </Menu>
+
+    <!-- chose  translation landing page-->
+    <Menu id ="19"
+          name="Translation_Landing_Page"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler"
+          >
+      <Title>Choosing a Translation</Title>
+      <Message>
+You have set the your default translation to the [getTranslationName: ]
+
+Whenever you use the BibleApp on MXit this will be your default translation.
+
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING VERSE FROM HISTORT PAGE-->
+    <Menu id ="20"
+          name="History_Page"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.VerseListScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="VerseHistoryOptionSet.verse_from_history"
+          help_page="21">
+      <Title>My Verse History.</Title>
+      <Message>These are the history of verses you requested for previously. Please choose one to view it again...</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.VerseHistoryOptionSet" extra_commands="Clear">
+        <EmptyListMessage>Your history list is empty, once you start requesting verses this list will fill up. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- HELP ON BROWSING OPTION-->
+    <Menu id ="21"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Verse History Option</Title>
+      <Message>
+This option allows you to see a list of up to 15 verses that you have requested previously.
+
+Any verse that you previously requested on the BibleApp will show up on this list allowing you to easily locate it again. However the history will last for a minimum of 1 month, after that time period it might be cleared. Verses will not be saved when you are browsing in 'The Reading Page' and press the "More", "Next Chapter" or "Previous Chapter" options. Only the original request would be recorded. Duplicate verses may be stored in the history list as well.
+      </Message>
+    </Menu>
+
+    <!-- USER FEEDBACK PAGE (the type should not of been called verse_select_page....what was i thinking :(-->
+    <Menu id ="22"
+      name="User_Feedback"
+      type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.UserFeedbackHandler">
+      <Title>Send us your feedback....</Title>
+      <Message>Please send us a message to let us know what you think...If you have any suggestions on ways to improve the service or if you noticed a problem/fault please let us know with a brief message (It has to be less than 1000 characters). We will look into it as soon as possible. </Message>
+      <Input id="1" target_page="23"></Input>
+    </Menu>
+
+    <Menu id ="23"
+      name="User_Feedback_Complete"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler"
+       back_link_enabled = "false">
+      <Title>Thanks! :)</Title>
+      <Message>
+Thanks for your feedback...You can return to the Main Screen by clicking the Main link below.
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING VERSE FROM MY FAVOURITE PAGE-->
+    <Menu id ="24"
+          name="Favourite_Verses"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.FavouriteListScreenOutputAdapter"
+          input_handler="MxitTestApp.Favourite_Verse_Menu_Handler"
+          output_var="FavouriteVersesOptionSet.verse_from_favourites"
+          help_page="25">
+      <Title>My Favourite Verses...</Title>
+      <Message>Please choose one to view it again.</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.FavouriteVersesOptionSet">
+        <EmptyListMessage>Your favourite list is empty. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- HELP ON FAVOURITE PAGE-->
+    <Menu id ="25"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the My Favourite Verses</Title>
+      <Message>
+This option allows you to see a list of up to 15 verses that you have saved previously as your favourites.
+
+You can save up to a maximum of 15 favourites (verse or sections i.e. you can save Eph 2:1-10 and this will count as one favourite).
+
+Once you reach the limit you will have to delete an existing favourite to make some more space to store a new favourite. To delete one click on the 'x' next to the entry, or send the following text "del:" followed by the index you want to delete.
+      </Message>
+    </Menu>
+
+    <Menu id ="26"
+    name="Added_Favourite"
+    type ="std_page"
+    screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+    input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Verse Added! :)</Title>
+      <Message>
+        You have added the verse to your list of favourites.
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING TESTAMENT PAGE FOR SHORT CODES-->
+    <Menu id ="27"
+          name="Short_Code_Testament_Select"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.ShortCodeTestamentHandler"
+          output_var="ShortCode_Handler.testament_id">
+      <Title>Bible Book Short Codes</Title>
+      <Message>Please choose the testament of the book that you would like to see the short codes of...</Message>
+      <Option id="1" link_val="1" select_action="28">Old Testament</Option>
+      <Option id="2" link_val="2" select_action="28">New Testament</Option>
+    </Menu>
+
+    <!-- CHOOSING BOOK PAGE FOR SHORT CODES-->
+    <Menu id ="28"
+          name="Short_Code_Book_Select"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="ShortCodeOptionSet.book_name">
+      <Title>Bible Book Short Codes</Title>
+      <Message>Please see the books of the [getTestamentName:ShortCode_Handler.testament_id] with their short codes below....</Message>
+      <DynamicList target_page="29" list_generator="MxitTestApp.ShortCodeOptionSet"></DynamicList>
+    </Menu>
+
+    <!-- SHOWING SHORT CODE SECTION-->
+    <Menu id ="29"
+          name="Short_Code_Display_Page"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler"
+          output_var="BookOptionSet.book_id">
+      <Title>Bible Book Short Codes</Title>
+      <Message>
+Instead of typing out the full name of [ShortCodeOptionSet.book_name] when requesting a verse you can use the short codes below:
+[getShortCodesStringList:ShortCodeOptionSet.book_name].
+      </Message>
+    </Menu>
+
+    <!-- SEARCH TYPE MENU PAGE-->
+    <Menu id ="30"
+          name="Search_Type"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler"
+          help_page = "30_help">
+      <Title>Top Favourites</Title>
+      <Message>Please choose one of the below</Message>
+      <Option id="1" link_val="1" select_action="31_verse">Top Favourite Single Verses</Option>
+      <Option id="2" link_val="2" select_action="31_section">Top Favourite Verse Sections</Option>
+    </Menu>
+
+    <!-- HELP ON TOP FAVOURITE PAGE-->
+    <Menu id ="30_help"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Top Favourite Verses</Title>
+      <Message>
+This particular menu allows you to choose to see the top favourite single verses, or the top favourite sections (where the starting verse is not the same as the ending verse).
+      </Message>
+    </Menu>
+
+    <!-- TOP FAVOURITE PAGE-->
+    <Menu id ="31_verse"
+          name="Top_Favourite_Verses"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.VerseListScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="TopFavouriteVersesOptionSet.verse_from_top_favourites"
+          help_page="31_verse_help">
+      <Title>The Top Favourite Verses</Title>
+      <Message>These are the top favourite single verses that different users have requested. Vote for a verse by browsing to it and adding it as your favourite. Only single verses are counted here. (note: you dont only have to vote for the verses below)</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.TopFavouriteVersesOptionSet">
+        <EmptyListMessage>There are no favourites available.  </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- HELP ON TOP FAVOURITE PAGE-->
+    <Menu id ="31_verse_help"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Top Favourite Verses</Title>
+      <Message>
+This option displays a list of which single verses are the most favourite (chosen by the users). It also shows how many users have that particular verse as a favourite.
+
+Note that other users can't see who exactly chose the favourites. They can only see how many people have that verse as a favourite in total.
+      </Message>
+    </Menu>
+
+    <!-- TOP FAVOURITE PAGE-->
+    <Menu id ="31_section"
+          name="Top_Favourite_Verse_Sections"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.VerseListScreenOutputAdapter"
+          input_handler="MxitTestApp.Dyn_Menu_Handler"
+          output_var="TopFavouriteVersesOptionSet.verse_from_top_favourites"
+          help_page="31_section_help">
+      <Title>The Top Favourite Verses</Title>
+      <Message>These are the top favourite verse sections that different users have requested. Vote for a verse section by browsing to it and adding it as your favourite. Only selections that have more than one verse are counted here. (note: any favourites that you add will be counted and not just the sections below)</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.TopFavouriteVerseSectionsOptionSet">
+        <EmptyListMessage>There are no favourites available.  </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- HELP ON TOP FAVOURITE PAGE-->
+    <Menu id ="31_section_help"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Top Favourite Verses</Title>
+      <Message>
+This option displays a list of sections that are the most favourite (chosen by the users). It also shows how many users have that particular section as a favourite.
+
+Note that other users can't see who exactly chose the favourites. They can only see how many people have that section as a favourite in total.
+      </Message>
+    </Menu>
+
+    <!-- USER NAME ENTRY PAGE-->
+    <Menu id ="34_user_name"
+      name="User_Feedback"
+      type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.UserNameHandler"
+      back_link_enabled = "false"
+      main_link_enabled = "false"
+      help_page="34_user_name_help_start">
+      <Title>Choose a User Name...</Title>
+      <Message>Welcome to the BibleApp on MXit, before continuing please enter a user name. (please keep it clean). </Message>
+      <Input id="1" target_page="1"></Input>
+    </Menu>
+
+    <!-- HELP ON USER NAME ENTRY PAGE-->
+    <Menu id ="34_user_name_help_start"
+          name="Help"
+          type ="std_page"
+          main_link_enabled = "false"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Choosing a User Name</Title>
+      <Message>
+You can send other BibleApp users messages (if you have added them as a buddy), and so now you need a proper user name. Choose a user name that is short and sweet and that your friends will be able to recognise :).
+
+You wont be able to use a name that is already taken so try appending the year of birth, age or something extra to ensure that your user name is unique, so that you dont have to try 500 times before finally finding a unique name.
+
+You will be able to update your user name on your profile at any time.
+      </Message>
+    </Menu>
+
+
+    <!-- USER NAME ENTRY PAGE-->
+    <Menu id ="34_user_name_change"
+      name="User_Name"
+      type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.UserNameHandler"
+      help_page="34_user_name_help">
+      <Title>Choose a User Name...</Title>
+      <Message>Your user name is currently [getUserName: ], please enter your new user name. (please keep it clean). If you would like to keep the current user name then either go back or to the Main Menu by clicking on the links </Message>
+      <Input id="1" target_page="34_user_name_updated"></Input>
+    </Menu>
+
+    <!-- HELP ON TOP FAVOURITE PAGE-->
+    <Menu id ="34_user_name_updated"
+          name="User_Name_Updated"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler"
+          back_link_enabled = "false">
+      <Title>User Name Updated</Title>
+      <Message>
+Your user name has been updated to [getUserName: ].
+      </Message>
+    </Menu>
+    
+    <!-- HELP ON USER NAME ENTRY PAGE-->
+    <Menu id ="34_user_name_help"
+          name="Help"
+          type ="std_page"
+          screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+          input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Choosing a User Name</Title>
+      <Message>
+You can send other BibleApp users messages (if you have added them as a buddy), and so now you need a proper user name. Choose a user name that is short and sweet and that your friends will be able to recognise :). 
+
+You wont be able to use a name that is already taken so try appending the year of birth, age or something extra to ensure that your user name is unique, so that you dont have to try 500 times before finally finding a unique name. 
+
+You will be able to update your user name on your profile at any time. 
+      </Message>
+    </Menu>
+
+    
+    <Menu id ="35_buddy_code_help"
+      name="Help"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on the Bible Buddy Code</Title>
+      <Message>
+Your Bible Buddy Code is what you give to a friend so that they can link up with you (a once off process). Once you are 'buddies' you will be able to send each other verses with a personal message. After your friend sends a buddy request to you using your code that you gave, you will have to approve the request.
+
+Alternatively your buddy can give you his/her code and you can send them a request. Once they approve it you will be able to send each other verses. 
+
+The code is not case sensitive. e.g. 'aaabbb' is the same as 'AAABBB'
+
+Q) Why a code?
+A) Because we dont have access to your friends list on MXit. That means we have to maintain our own friend list within the BibleApp. Some users might also choose very long user names so it just makes sense to give everyone a short code. 
+
+Finally: Please refrain from guessing codes, and adding random strangers. Please also refrain from any form of verbal abuse/cyber bullying. Offences like this will not be taken lightly. 
+    </Message>
+    </Menu>
+
+    <!-- USER NAME ENTRY PAGE-->
+    <Menu id ="35_my_profile"
+      name="MyProfile"
+      type ="verse_select_page"
+      screen_adapter="MxitTestApp.MyProfileOutputAdapter"
+      input_handler="MxitTestApp.MyProfileHandler">
+      <Title>My Profile</Title>
+      <Message></Message>
+      <Input id="1" target_page="34_user_name_updated"></Input>
+    </Menu>
+
+    <!-- SEARCH RESULT PAGE-->
+    <Menu id ="36_friend_request_page"
+          name="Friend_Requests"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.FriendRequestScreenOutputAdapter"
+          input_handler="MxitTestApp.FriendRequestHandler"
+          output_var="testvar">
+      <Title>My Buddy Requests</Title>
+      <Message>The following people have requested to be your Buddy. that means they will be able to send you verses etc, and you will be able to send to them as well. Click on the + to approve a request or the - to reject it.</Message>
+      <DynamicList target_page="35_my_profile" list_generator="MxitTestApp.MyFriendRequestOptionSet">
+        <EmptyListMessage>No results found. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- Friend Request input PAGE-->
+    <Menu id ="36_friend_request_input_page"
+          name="Friend_Request_Input"
+          type ="verse_select_page"
+          screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+          input_handler="MxitTestApp.FriendRequestInputHandler"
+          output_var="testvar2"
+           help_page="36_friend_request_input_page_help">
+      <Title>Send a Buddy Request</Title>
+      <Message>To send a buddy request enter their buddy code. You can ask your friend to look at their profile to see what their code is.</Message>
+      <DynamicList target_page="35_my_profile" list_generator="MxitTestApp.MyFriendRequestOptionSet">
+        <EmptyListMessage>No results found. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <Menu id ="36_friend_request_input_page_help"
+      name="Help"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on sending a buddy request</Title>
+      <Message>
+Before being able to send a buddy request you need to obtain your buddies BibleApp buddy code. They can find this on their profile. 
+
+You then use this page to enter this code. Once you have done that your buddy request will be sent to them. Once they approve it, you will be buddies, and you can send them verses etc. 
+
+Finally: Please refrain from guessing codes, and adding random strangers. Please also refrain from any form of verbal abuse/cyber bullying. Offences like this will not be taken lightly. 
+      </Message>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="36_friend_page"
+          name="Friend_Requests"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.FriendScreenOutputAdapter"
+          input_handler="MxitTestApp.FriendHandler"
+          output_var="testvar">
+      <Title>My Buddy List</Title>
+      <Message>The following people are your buddies, that means you can send them Bible Verses and they can send you as well. </Message>
+      <DynamicList target_page="35_my_profile" list_generator="MxitTestApp.MyFriendsOptionSet">
+        <EmptyListMessage>You don't have any buddies yet. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_message_inbox"
+          name="37_message_inbox"
+          type ="std_page"
+          screen_adapter="MxitTestApp.MessageInboxScreenOutputAdapter"
+          input_handler="MxitTestApp.MessageInboxHandler"
+          output_var="testvar">
+      <Title>My Inbox</Title>
+      <Message>The following are messages sent by your buddies or directly from the BibleApp team. Please remember standard MXit rules apply. Dont give away personal info to people you don't know. Dont trust anybody either.  </Message>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_thread_messages_view"
+          name="37_thread_messages_view"
+          type ="std_page"
+          screen_adapter="MxitTestApp.MessageThreadScreenOutputAdapter"
+          input_handler="MxitTestApp.MessageThreadHandler"
+          output_var="testvar">
+      <Title>My Inbox</Title>
+      <Message></Message>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_thread_messages_reply"
+          name="37_thread_messages_reply"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.ReplyToVerseMessageHandler">
+      <Title>Reply</Title>
+      <Message>Enter your message...</Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_verse_message_send"
+          name="37_verse_message_send"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.VerseMessageSendOutputAdapter"
+      input_handler="MxitTestApp.VerseMessageSendHandler">
+      <Title>Send a Message</Title>
+      <Message>Fill in the below form and then send the message. Please remember standard MXit rules apply. Dont give away personal info to people you don't know. Dont trust anybody either. </Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_vm_send_friend_page"
+          name="37_vm_send_friend_page"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.ChooseFriendScreenOutputAdapter"
+          input_handler="MxitTestApp.ChooseFriendHandler"
+          output_var="testvar">
+      <Title>Send a Message</Title>
+      <Message>
+Please choose your buddies to send the message to...
+
+Tip: We changed things around so that you can message more than one buddy at a time if you want to. Add recipients by clicking the + next to their name. Remove them by clicking the - next to their name in the recipient list below. When you done choosing buddies click Back.
+      </Message>
+      <DynamicList target_page="35_my_profile" list_generator="MxitTestApp.MyFriendsOptionSet">
+        <EmptyListMessage>You don't have any buddies yet. </EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_vm_send_subject"
+          name="37_vm_send_subject"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.EnterSubjectVerseMessageHandler">
+      <Title>Send a Message</Title>
+      <Message>Please enter a subject for your message (it needs to be less than 50 characters)...</Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_vm_send_message_text"
+          name="37_vm_send_message_text"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.EnterMessageTextVerseMessageHandler">
+      <Title>Send a Message</Title>
+      <Message>Please enter a message that will appear in your buddy's inbox along with the verse (it needs to be less than 500 characters)...</Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_notif_message_send"
+          name="37_notif_message_send"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.NotifMessageSendOutputAdapter"
+      input_handler="MxitTestApp.NotifMessageSendHandler">
+      <Title>Send Notification Message</Title>
+      <Message>Fill in the below form and then send the message. This is an Admin only area! </Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- MY FRIENDS PAGE-->
+    <Menu id ="37_enter_id_notif_messages_reply"
+          name="37_enter_id_notif_messages_reply"
+          type ="verse_select_page"
+      screen_adapter="MxitTestApp.InputScreenOutputAdapter"
+      input_handler="MxitTestApp.EnterIDNotifMessageHandler">
+      <Title>Send Notification Message</Title>
+      <Message>Enter profile ID number of recipient...</Message>
+      <Input id="1" target_page="NOTUSED"></Input>
+    </Menu>
+
+    <!-- CHOOSING colour pages-->
+    <Menu id ="38_colour_theme"
+          name="Colour_Theme"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.ColourThemeHandler"
+          output_var="Colour_Theme.colour_theme"
+          help_page="38_colour_theme_help">
+      <Title>Choose a Colour Theme</Title>
+      <Message>
+Your current theme is set to [getThemeName: ].
+
+Choose one of the options below to change your theme. Once you change it, it only changes the colour theme in the BibleApp. If you want to reset to your default skin however, you can press reset and then log out of Mxit and back in to go back to your own skin within the BibleApp. 
+      </Message>
+      <DynamicList target_page="38_colour_theme" list_generator="MxitTestApp.ColourThemeOptionSet" extra_commands="Reset"></DynamicList>
+    </Menu>
+
+
+    <Menu id ="38_colour_theme_help"
+      name="Help"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on changing the colour theme</Title>
+      <Message>
+You can change your colour theme by choosing one of the themes listed in this menu. Once you choose a theme it will become your default theme so when you log in again next time you will have the same colour theme.
+
+If you have changed to one of the themes but dont want to use any of the provided colour schemes and instead prefer your own theme/skin then click the 'Reset' option and log out and into Mxit again. 
+      </Message>
+    </Menu>
+    
+    <Menu id ="39_Topic_Categories"
+              name="Common_Bible_Topics"
+              type ="dyn_page"
+              screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+              input_handler="MxitTestApp.TopicHandler"
+              output_var="Bible_Topic.category_id"
+              help_page="39_help">
+      <!--help_page="18"-->
+      <Title>Comon Bible Topic Categories</Title>
+      <Message>
+Please choose one of the categories below. 
+      </Message>
+      <DynamicList target_page="39_Topics" list_generator="MxitTestApp.BibleTopicCategoryOptionSet"></DynamicList>
+    </Menu>
+
+    <Menu id ="39_Topics"
+              name="Common Bible Topics"
+              type ="dyn_page"
+              screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+              input_handler="MxitTestApp.TopicHandler"
+              output_var="Bible_Topic.topic_id"
+              help_page="39_help"><!--help_page="18"-->
+      <Title>Comon Bible Topics</Title>
+      <Message>
+Below is a list of topics for the "[getCategoryName:Bible_Topic.category_id]" category you chose. Choose one to browse to the location in the Bible. In some cases the section is quite long, in that case we only show you the starting verse of the topic. 
+
+Also note not all the various topics for the given category are presented below. 
+      </Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.BibleTopicOptionSet"></DynamicList>
+    </Menu>
+
+
+    <Menu id ="39_help"
+      name="Help"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Topics</Title>
+      <Message>
+You can use this option to locate familiar sections/topics in the Bible. First choose a category then choose a topic. You will then be taken to The Reading Page. 
+
+For certain topics we only give you the start verse, you can browse once you on The Reading Page by clicking the "More" option.
+
+Not all topics are shown, and also where certain topics/sections/parables are repeated in the Bible, we only give on of the references.
+
+Lastly thanks to the Bible Society of South Africa for assisting with the topics section. 
+      </Message>
+    </Menu>
+
+    <!-- CHOOSING VERSE FROM HISTORT PAGE-->
+    <Menu id ="40_daily_verses"
+          name="Daily_Verses_Page"
+          type ="dyn_page"
+          screen_adapter="MxitTestApp.DynScreenOutputAdapter"
+          input_handler="MxitTestApp.DailyVerseHandler"
+          output_var="DailyVerseOptionSet.daily_verse_selected"
+          help_page="21">
+      <Title>My Verse History.</Title>
+      <Message>These are all the daily verses sent out by the BibleApp. Go to your profile on the main menu to subscribe to this list.</Message>
+      <DynamicList target_page="12" list_generator="MxitTestApp.DailyVerseOptionSet">
+        <EmptyListMessage>No daily verses has been sent out yet.</EmptyListMessage>
+      </DynamicList>
+    </Menu>
+
+    <Menu id ="40_daily_verses_help"
+      name="Help"
+      type ="std_page"
+      screen_adapter="MxitTestApp.OptionScreenOutputAdapter"
+      input_handler="MxitTestApp.Std_Menu_Handler">
+      <Title>Help on Topics</Title>
+      <Message>
+This option allows you to look at all the daily verses that was sent out by the BibleApp previously. Enjoy :). 
+      </Message>
+    </Menu>
+    
+  </MxitApp>
+</xml>

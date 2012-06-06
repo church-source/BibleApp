@@ -1,0 +1,13 @@
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\ColourThemes.xml
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MenuDefinition.xml
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXit.ExternalApp.Examples.Redirect.exe.config
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXit.ExternalApp.Examples.Redirect.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXit.ExternalApp.Examples.Redirect.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXit.ExternalApp.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MySql.Data.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\Sphinx.Client.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXit.ExternalApp.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\bin\Debug\MXitExternalAppSDK.xml
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Debug\MXit.ExternalApp.Examples.Redirect.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\ExternalAppExamples\ExternalAppExamples\MXit.ExternalApp.BibleApp\obj\x86\Debug\MXit.ExternalApp.Examples.Redirect.pdb
