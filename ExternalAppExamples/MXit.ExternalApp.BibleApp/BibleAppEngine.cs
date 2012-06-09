@@ -137,11 +137,11 @@ namespace MXit.ExternalApp.Examples.Redirect
             //calcuate time until 3am next morning when we will start sending daily verses. 
             DateTime current_time = DateTime.Now;
             DateTime time_to_send = DateTime.Now;
-            if (current_time.Hour >= 0 && current_time.Hour < 3)
+            if (current_time.Hour >= 0 && current_time.Hour < 6)
             {
                 //send on current day
                 time_to_send = current_time.Date;
-                time_to_send = time_to_send.AddHours(3);
+                time_to_send = time_to_send.AddHours(6);
             }
             else
             {
@@ -197,17 +197,46 @@ namespace MXit.ExternalApp.Examples.Redirect
                 String user_name = "";
                 DateTime nowdate = DateTime.Now;
                 List<MessageToSend> messages = new List<MessageToSend>();
-                while (rdr.Read())
+                List<DailyVerseRecipient> recip_list = new List<DailyVerseRecipient>();
+                try
+                {
+                    while (rdr.Read())
+                    {
+                        try
+                        {
+                            recip_list.Add(
+                                new DailyVerseRecipient(
+                                    (rdr[0]).ToString(),                    //MXit user_id
+                                    long.Parse((rdr[2]).ToString()),        //local id
+                                    Int32.Parse((rdr[3]).ToString())));      //theme
+                        
+                        }
+                        catch(Exception e1)
+                        {
+                            Console.WriteLine("Error: " + e1.Message + " \r\n " + e1.StackTrace);
+                        }
+                    }
+                }
+                catch(Exception e2)
+                {
+                    Console.WriteLine(e2.Message);
+                    Console.WriteLine(e2.StackTrace);
+                
+                }
+                Console.WriteLine("__________________________________________________________"); 
+                Console.WriteLine("Sending DailyVese to: " + recip_list.Count + " users");
+                Console.WriteLine("__________________________________________________________");
+                foreach (DailyVerseRecipient dvr in recip_list)
                 {
                     try
                     {
-                        user_id = (rdr[0]).ToString();
+                        user_id = dvr.user_id;
                         //is_subscribed = Boolean.Parse((rdr[1]).ToString());
-                        user_name = UserNameManager.getUserName(long.Parse((rdr[2]).ToString()));
+                        user_name = UserNameManager.getUserName(dvr.id);
                         messageToSend = new MessageToSend("", user_id, User.DeviceInfo.DefaultDevice);
                         messageToSend.MaySpool = true;
                         messageToSend.Append(MessageBuilder.Elements.CreateClearScreen());
-                        UserColourTheme uct = UserColourTheme.getColourTheme(Int32.Parse((rdr[3]).ToString()));
+                        UserColourTheme uct = UserColourTheme.getColourTheme(dvr.theme);
 
                         messageToSend.Body = "Hi " + user_name+
                         "\r\n\r\nYour Daily Verse For " + nowdate.ToString("dd/MM/yyyy") + "... \r\n\r\n" +
@@ -236,7 +265,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                         messages.Add(messageToSend);
                         send_count++;
                         //after every 30 messages we wait a bit to let messags in queue to get sent
-                        if (send_count % 2 == 0)
+                        if (send_count % 30 == 0)
                         {
                             BatchJobData bjd = new BatchJobData();
                             bjd.engine = this;
@@ -251,6 +280,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                     catch (Exception e1)
                     {
                         Console.WriteLine(e1.Message);
+                        Console.WriteLine(e1.StackTrace);
                         error_count++;
                     }
                 }
@@ -271,6 +301,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                     catch (Exception e1)
                     {
                         Console.WriteLine(e1.Message);
+                        Console.WriteLine(e1.StackTrace);
                         error_count++;
                     }
                 }
@@ -311,5 +342,19 @@ namespace MXit.ExternalApp.Examples.Redirect
         }
 
         public const string MENU_LINK_NAME = "menu_link";
+
+        public class DailyVerseRecipient
+        {
+            public String user_id {get;set;}
+            public long id {get;set;}
+            public int theme {get;set;}
+
+            public DailyVerseRecipient(String user_id, long id, int theme)
+            {
+                this.user_id = user_id;
+                this.id = id;
+                this.theme = theme;
+            }
+        }
     }
 }
