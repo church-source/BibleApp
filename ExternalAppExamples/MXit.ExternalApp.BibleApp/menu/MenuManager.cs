@@ -18,6 +18,7 @@ namespace MxitTestApp
 
         static MenuManager()
         {
+            instance = new MenuManager();
             getInstance();
         }
 

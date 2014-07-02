@@ -16,7 +16,7 @@ namespace MxitTestApp
         //fill existing code list. this will be maintained in memory so that we dont have to query the db for this everytime. 
         static UserRoleManager()
         {
-            Console.WriteLine("Loading User Names...");
+            Console.WriteLine("Loading User Roles...");
             string sqlQuery = "SELECT user_id,role FROM userroles";
             MySqlConnection conn = DBManager.getConnection();
             try
@@ -38,7 +38,6 @@ namespace MxitTestApp
                 conn.Close();
             }
         }
-
 
 
         public static UserRoleManager getInstance()

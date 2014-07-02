@@ -83,6 +83,8 @@
     <Compile Include="bible\topics\Category.cs" />
     <Compile Include="bible\topics\Topic.cs" />
     <Compile Include="bible\topics\BibleTopicManager.cs" />
+    <Compile Include="db\TaggedVerseLikeTask.cs" />
+    <Compile Include="db\VerseTagTask.cs" />
     <Compile Include="db\VerseBookMarkTask.cs" />
     <Compile Include="db\VerseHistoryTask.cs" />
     <Compile Include="db\ParticipantAccessUpdateTask.cs" />
@@ -94,6 +96,8 @@
     <Compile Include="friends\FriendRelation.cs" />
     <Compile Include="input_handler\Bible_Handlers\ChooseFriendHandler.cs" />
     <Compile Include="input_handler\Bible_Handlers\ColourThemeHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\TaggedVersesHandler.cs" />
+    <Compile Include="input_handler\Bible_Handlers\VerseTagHandler.cs" />
     <Compile Include="input_handler\Bible_Handlers\DailyVerseHandler.cs" />
     <Compile Include="input_handler\Bible_Handlers\TopicHandler.cs" />
     <Compile Include="input_handler\Bible_Handlers\EnterIDNotifMessageHandler.cs" />
@@ -117,6 +121,9 @@
     <Compile Include="menu\MenuIDConstants.cs" />
     <Compile Include="menu\OptionSets\BibleTopicCategoryOptionSet.cs" />
     <Compile Include="menu\OptionSets\BibleTopicOptionSet.cs" />
+    <Compile Include="menu\OptionSets\TaggedVerseMenuOptionItem.cs" />
+    <Compile Include="menu\OptionSets\TaggedVersesOptionSet.cs" />
+    <Compile Include="menu\OptionSets\VerseEmotionOptionSet.cs" />
     <Compile Include="menu\OptionSets\DailyVerseOptionSet.cs" />
     <Compile Include="menu\OptionSets\FavouriteVersesOptionSet.cs" />
     <Compile Include="menu\OptionSets\MessageThreadMenuOptionItem.cs" />
@@ -129,6 +136,7 @@
     <Compile Include="menu\OptionSets\SearchVersesOptionSet.cs" />
     <Compile Include="screen_adapter\bible_adapters\ChooseFriendScreenOutputAdapter.cs" />
     <Compile Include="screen_adapter\bible_adapters\DailyVerseListScreenOutputAdapter.cs" />
+    <Compile Include="screen_adapter\bible_adapters\TaggedVersesScreenOutputAdapter.cs" />
     <Compile Include="screen_adapter\bible_adapters\NotifMessageSendOutputAdapter.cs" />
     <Compile Include="screen_adapter\bible_adapters\VerseMessageSendOutputAdapter.cs" />
     <Compile Include="screen_adapter\bible_adapters\MessageThreadScreenOutputAdapter.cs" />
@@ -227,6 +235,12 @@
     <Compile Include="verseMessaging\VerseMessageThread.cs" />
     <Compile Include="verseMessaging\VerseMessagingManager.cs" />
     <Compile Include="verseMessaging\VerseThreadManager.cs" />
+    <Compile Include="verse_tags\VerseTagEmotionLike.cs" />
+    <Compile Include="verse_tags\VerseEmotionTagAlreadyPresentException.cs" />
+    <Compile Include="verse_tags\VerseTag.cs" />
+    <Compile Include="verse_tags\VerseTagVote..cs" />
+    <Compile Include="verse_tags\VerseTagEmotion.cs" />
+    <Compile Include="verse_tags\VerseTagManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

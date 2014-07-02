@@ -1,0 +1,11 @@
+C:\Users\rpillay\AppData\Local\Temporary Projects\BibleLoader\bin\Release\BibleLoader.exe
+C:\Users\rpillay\AppData\Local\Temporary Projects\BibleLoader\bin\Release\BibleLoader.pdb
+C:\Users\rpillay\AppData\Local\Temporary Projects\BibleLoader\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\rpillay\AppData\Local\Temporary Projects\BibleLoader\obj\x86\Release\BibleLoader.exe
+C:\Users\rpillay\AppData\Local\Temporary Projects\BibleLoader\obj\x86\Release\BibleLoader.pdb
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Release\BibleLoader.exe
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Release\BibleLoader.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\BibleLoader\BibleLoader\bin\Release\BibleLoader.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\BibleLoader\BibleLoader\bin\Release\BibleLoader.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\BibleLoader\BibleLoader\bin\Release\MySql.Data.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Release\ResolveAssemblyReference.cache

@@ -63,12 +63,12 @@ namespace MxitTestApp
                     if (empty_msg != null && empty_msg != "")
                         ms.Append(dmp.dynamic_set.getListEmptyMessage() + "\r\n");
                 }
-                addLinksToMessageFromList(us, dyn_options, ref ms);
-                appendPaginateLinks(us, ref ms, dyn_options.Count);
+                addLinksToMessageFromList(us, dyn_options, ms);
+                appendPaginateLinks(us, ms, dyn_options.Count);
                 addQuickFilterLinksToMessageFromList(us, ms);
                 appendExtraCommandLinks(dmp.dynamic_set.getExtraCommandString(), ms);
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us, ms);
+                appendMessageConfig(true,  ms);
             }
             return ms;
             //return output;
@@ -77,7 +77,7 @@ namespace MxitTestApp
         public override void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms)
+            MessageToSend ms)
         {
             int count = (us.current_menu_page * MenuDefinition.PAGE_ITEM_COUNT) + 1;
 
@@ -90,7 +90,7 @@ namespace MxitTestApp
             {
                 an_option = (FriendRelationMenuOptionItem)list.ElementAt(i);
                 fr = an_option.fr;
-                ms.Append("* " + UserNameManager.getUserName(long.Parse(an_option.display_text)));
+                ms.Append("* " + UserNameManager.getInstance().getUserName(long.Parse(an_option.display_text)));
                 ms.Append(" ");
                 ms.Append(createMessageLink(MENU_LINK_NAME, "[REMOVE]", "DELETE_" + an_option.display_text));
                 ms.Append(" ");

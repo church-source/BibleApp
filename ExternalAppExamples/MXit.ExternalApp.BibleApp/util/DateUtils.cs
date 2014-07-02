@@ -9,6 +9,10 @@ namespace MxitTestApp
     {
         public static string RelativeDate(DateTime theDate)
         {
+            if (theDate == null)
+            {
+                return "";
+            }
             Dictionary<long, string> thresholds = new Dictionary<long, string>();
             int minute = 60;
             int hour = 60 * minute;

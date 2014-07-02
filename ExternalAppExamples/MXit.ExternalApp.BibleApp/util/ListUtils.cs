@@ -62,5 +62,19 @@ namespace MxitTestApp
             }
             return final_list;
         }
+
+
+        public static List<VerseTagEmotion> convertEmotionDictionaryToList(Dictionary<int, VerseTagEmotion> dictionary)
+        {
+            List<KeyValuePair<int, VerseTagEmotion>> list;
+            list = dictionary.ToList();
+            List<VerseTagEmotion> final_list = new List<VerseTagEmotion>();
+            foreach (var obj in list)
+            {
+                VerseTagEmotion o = obj.Value;
+                final_list.Add(o);
+            }
+            return final_list;
+        }
     }
 }

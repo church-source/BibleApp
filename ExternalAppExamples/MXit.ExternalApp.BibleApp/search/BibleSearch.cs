@@ -59,7 +59,7 @@ namespace MxitTestApp
                     searchQuery.AttributeFilters.Add("testament", testament, false);
                 }
                 // Set amount of matches will be returned to client 
-                searchQuery.Limit = 15;
+                searchQuery.Limit = 50;
 
                 // Create search command object
                 SearchCommand searchCommand = new SearchCommand(connection);

@@ -62,6 +62,29 @@ namespace MxitTestApp
         }
 
         /*this method either returns the new screen id or the main or prev command string*/
+        protected virtual InputHandlerResult handleRefreshLink(
+            UserSession user_session,
+            string input)
+        {
+            String entry = input.ToUpper();
+            if (REFRESH.Equals(entry))
+            {
+                return new InputHandlerResult(
+                    InputHandlerResult.DO_NOTHING_ACTION,
+                    user_session.current_menu_loc,
+                    user_session.current_menu_page); //the menu id is retreived from the session in this case. 
+            }
+            else
+            {
+                return new InputHandlerResult(
+                    InputHandlerResult.UNDEFINED_MENU_ACTION,
+                    InputHandlerResult.DEFAULT_MENU_ID,
+                    InputHandlerResult.DEFAULT_PAGE_ID);
+                 
+            }
+        }
+
+        /*this method either returns the new screen id or the main or prev command string*/
         protected virtual InputHandlerResult handleStdNavLinks(
             UserSession user_session,
             string input,
@@ -162,10 +185,15 @@ namespace MxitTestApp
             String entry = input.ToUpper();
             if (PREV_PAGE.Equals(entry))
             {
+                int new_page = user_session.current_menu_page;
+                if (user_session.current_menu_page > 0)
+                {
+                    new_page = user_session.current_menu_page - 1;
+                }
                 return new InputHandlerResult(
                     InputHandlerResult.PREV_PAGE_ACTION,
                     user_session.current_menu_loc,
-                    user_session.current_menu_page - 1); //the menu id is retreived from the session in this case. 
+                    new_page); //the menu id is retreived from the session in this case. 
             }
             else if (NEXT_PAGE.Equals(entry))
             {
@@ -247,6 +275,7 @@ namespace MxitTestApp
         public const string PREV_MENU = "BACK";
         public const string MAIN_MENU = "MAIN";
         public const string HELP_MENU = "HELP";
+        public const string REFRESH = "REFRESH";
 
         public const string PREV_PAGE   = "PREV";
         public const string NEXT_PAGE   = "NEXT";

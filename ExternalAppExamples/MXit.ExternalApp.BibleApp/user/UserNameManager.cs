@@ -97,7 +97,7 @@ namespace MxitTestApp
             }
         }
 
-        public static String getUserName(long user_id)
+        public String getUserName(long user_id)
         {
             if (user_name_by_id_list.ContainsKey(user_id))
             {
@@ -106,7 +106,7 @@ namespace MxitTestApp
             return "NO NAME - ERROR OCCURED";
         }
 
-        public static long getUserID(String user_name)
+        public long getUserID(String user_name)
         {
             if (user_name_list.ContainsKey(user_name.ToUpper()))
             {

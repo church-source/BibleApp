@@ -63,12 +63,12 @@ namespace MxitTestApp
                     if (empty_msg != null && empty_msg != "")
                         ms.Append(dmp.dynamic_set.getListEmptyMessage() + "\r\n");
                 }
-                addLinksToMessageFromList(us, dyn_options, ref ms);
+                addLinksToMessageFromList(us, dyn_options, ms);
 
-                appendPaginateLinks(us, ref ms, dyn_options.Count);
+                appendPaginateLinks(us, ms, dyn_options.Count);
                 appendExtraCommandLinks(dmp.dynamic_set.getExtraCommandString(), ms);
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us, ms);
+                appendMessageConfig(true, ms);
             }
             return ms;
             //return output;
@@ -77,7 +77,7 @@ namespace MxitTestApp
         public override void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms)
+            MessageToSend ms)
         {
             int count = (us.current_menu_page * MenuDefinition.PAGE_ITEM_COUNT) + 1;
 

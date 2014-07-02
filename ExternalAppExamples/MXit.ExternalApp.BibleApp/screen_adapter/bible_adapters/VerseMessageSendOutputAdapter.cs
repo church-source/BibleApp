@@ -138,8 +138,8 @@ namespace MxitTestApp
                     ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Send Message", VerseMessageSendHandler.SEND_MESSAGE));
             }
             ms.AppendLine("");
-            appendBackMainLinks(us, ref ms);
-            appendMessageConfig(true, ref ms);
+            appendBackMainLinks(us, ms);
+            appendMessageConfig(true,  ms);
             return ms;
             //return output;
         }
@@ -152,7 +152,7 @@ namespace MxitTestApp
                 List<long> recipient_list = (List<long>)us.getVariableObject(ChooseFriendHandler.RECIPIENT_LIST);
                 for (int i = 0; i < recipient_list.Count; i++)
                 {
-                    send_list += (UserNameManager.getUserName(recipient_list[i]));
+                    send_list += (UserNameManager.getInstance().getUserName(recipient_list[i]));
                     if (recipient_list.Count > 1 && (i != recipient_list.Count - 1))
                         send_list+=", ";
                 }

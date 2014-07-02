@@ -138,7 +138,7 @@ namespace MxitTestApp
                 {
                     Verse start = vs.start_verse;
                     Verse end = vs.end_verse;
-                    if (end_verse == null)
+                    if (end == null)
                     {
                         end = BrowseBibleScreenOutputAdapter.getDefaultEndVerse(start);
                     }

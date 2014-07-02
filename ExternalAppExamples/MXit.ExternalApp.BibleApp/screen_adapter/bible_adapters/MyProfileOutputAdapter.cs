@@ -28,7 +28,7 @@ namespace MxitTestApp
             if (us.user_profile.is_suspended)
             {
                 ms.Append("You are suspended from the social aspect of this App. You can continue to browse the Bible however.");
-                appendBackMainLinks(us, ref ms);
+                appendBackMainLinks(us,  ms);
                 return ms;
             }
             VerseMenuPage omp = (VerseMenuPage)mp;
@@ -165,8 +165,8 @@ namespace MxitTestApp
             }
 
             ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Refresh", MyProfileHandler.REFRESH_PROFILE));
-            appendBackMainLinks(us, ref ms);
-            appendMessageConfig(true, ref ms);
+            appendBackMainLinks(us, ms);
+            appendMessageConfig(true,  ms);
             return ms;
             //return output;
         }

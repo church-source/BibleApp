@@ -29,7 +29,7 @@ namespace MxitTestApp
             {
                 ms.Append((string)ihr.error + "\r\n");
                 //dont clear screen after this. 
-                appendMessageConfig(false, ref ms);
+                appendMessageConfig(false, ms);
             }
             else
             {
@@ -100,12 +100,12 @@ namespace MxitTestApp
 
                     if (clear_screen)
                     {
-                        appendMessageConfig(true, ref ms);
+                        appendMessageConfig(true, ms);
                     }
                     else
                     {
                         //dont clear screen after this. 
-                        appendMessageConfig(false, ref ms);
+                        appendMessageConfig(false, ms);
                     }
 
                 }
@@ -113,7 +113,7 @@ namespace MxitTestApp
                 {
 
                     ms.Append("An error has occured, please try a different book/chapter \r\n");
-                    appendBackMainLinks(us, ref ms);
+                    appendBackMainLinks(us,  ms);
                     return ms;
                 }
             }
@@ -127,7 +127,7 @@ namespace MxitTestApp
                 count++;
             }*/
 
-            appendBackMainLinks(us, ref ms);
+            appendBackMainLinks(us, ms);
             return ms;
             //return output;
         }
@@ -221,6 +221,8 @@ namespace MxitTestApp
             ms.Append(createMessageLink(MENU_LINK_NAME, "Send", Browse_Bible_Handler.SEND_TO_BUDDY));
             ms.Append(" | ");
             ms.Append(createMessageLink(MENU_LINK_NAME, "Add to Favourites", Browse_Bible_Handler.ADD_TO_FAV));
+            ms.Append(" | ");
+            ms.Append(createMessageLink(MENU_LINK_NAME, "Tag", Browse_Bible_Handler.TAG_VERSE));
             ms.Append("\r\n");
         }
 

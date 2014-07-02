@@ -1,0 +1,6 @@
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\bin\Debug\BibleTopicLoader.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\bin\Debug\BibleTopicLoader.pdb
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\bin\Debug\MySql.Data.dll
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\obj\x86\Debug\BibleTopicLoader.exe
+C:\Users\rpillay\Documents\Visual Studio 2010\Projects\GotQuestionsLoader\BibleTopicLoader\obj\x86\Debug\BibleTopicLoader.pdb

@@ -17,7 +17,7 @@ namespace MxitTestApp
         public override void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms)
+            MessageToSend ms)
         {
             int count = (us.current_menu_page * MenuDefinition.PAGE_ITEM_COUNT) + 1;
 

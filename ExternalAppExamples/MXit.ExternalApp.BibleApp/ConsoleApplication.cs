@@ -46,7 +46,7 @@ namespace MXit.ExternalApp.Examples.Redirect
         static void Main(string[] args)
         {
 
-
+         //   VerseTagManager.getInstance().addVerseTag(13, "John 1:1", null, 3);
             ConsoleApplication ca = new ConsoleApplication();
             Console.Write("Initializing Random Code Engine...");
             String  randomCode = BibleUserCodeCreator.getInstance().generateUniqueANRandomCode(6);
@@ -54,6 +54,9 @@ namespace MXit.ExternalApp.Examples.Redirect
             BibleUserCodeCreator.getInstance().generateANRandomCodesForExistingUsers(6);
             Console.WriteLine("Done");
             ExternalAppService<UserSession, BibleAppEngine> externalApp = null;
+            Console.Write("Loading User Names and roles from DB...");
+            Console.WriteLine(UserNameManager.getInstance()); UserRoleManager.getInstance();
+            Console.Write("Done...");
             try
             {
                 try
@@ -109,6 +112,11 @@ namespace MXit.ExternalApp.Examples.Redirect
                 Console.WriteLine(BibleContainer.getInstance().getBible(1).testaments[1].getBook("John").getChapter(3).getVerse(16).text);
                 Console.WriteLine(BibleContainer.getInstance().getBible(2).testaments[1].getBook("John").getChapter(3).getVerse(16).text);
                 Console.WriteLine("Load Completed");
+
+                Console.WriteLine("Loading Menus...");
+                MenuManager.getInstance();
+                Console.WriteLine("Menus are loaded");
+
 
                 Console.WriteLine("Initializing Daily Verse function...");
                 //this has to be done after the Bible Load

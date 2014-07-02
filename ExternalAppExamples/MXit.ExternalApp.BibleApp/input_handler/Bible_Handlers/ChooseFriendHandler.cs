@@ -84,7 +84,7 @@ namespace MxitTestApp
 
                 friend_id = entry.Split('_')[1];
                 long f_id = long.Parse(friend_id);
-                String name = UserNameManager.getUserName(f_id);
+                String name = UserNameManager.getInstance().getUserName(f_id);
                 if (!recipient_list.Contains(f_id))
                     recipient_list.Add(f_id);
                     //user_session.setVariable(VerseMessageSendOutputAdapter.FRIEND_TO_SEND_ID, friend_id);
@@ -111,7 +111,7 @@ namespace MxitTestApp
 
                 friend_id = entry.Split('_')[1];
                 long f_id = long.Parse(friend_id);
-                String name = UserNameManager.getUserName(f_id);
+                String name = UserNameManager.getInstance().getUserName(f_id);
                 if (recipient_list.Contains(f_id))
                     recipient_list.Remove(f_id);
                 //user_session.setVariable(VerseMessageSendOutputAdapter.FRIEND_TO_SEND_ID, friend_id);

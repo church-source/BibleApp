@@ -60,8 +60,8 @@ namespace MxitTestApp
                 //addQuickFilterLinksToMessageFromList(us, ms);
                 ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Refresh", MessageInboxHandler.REFRESH_INBOX));
                 ms.AppendLine();
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us,  ms);
+                appendMessageConfig(true, ms);
             }
             return ms;
             //return output;
@@ -71,7 +71,7 @@ namespace MxitTestApp
         //is on
         public override void appendPaginateLinks(
             UserSession us,
-            ref MessageToSend ms,
+            MessageToSend ms,
             int count,
             int count_per_page)
         {
@@ -137,7 +137,7 @@ namespace MxitTestApp
                     continue;
                 appendMessageThread(us, ms, vmt);
             }
-            appendPaginateLinks(us, ref ms, threads.Count, THREAD_COUNT_PER_PAGE);
+            appendPaginateLinks(us,  ms, threads.Count, THREAD_COUNT_PER_PAGE);
         }
 
         protected void appendMessageThread(
@@ -173,7 +173,7 @@ namespace MxitTestApp
             }
             else
             {
-                ms.AppendLine(" " + UserNameManager.getUserName(first_vm.sender_id), TextMarkup.Bold);
+                ms.AppendLine(" " + UserNameManager.getInstance().getUserName(first_vm.sender_id), TextMarkup.Bold);
             }
 
             ms.Append("To: ");
@@ -208,7 +208,7 @@ namespace MxitTestApp
                 }
                 else
                 {
-                    ms.Append(UserNameManager.getUserName(last_vm.sender_id) + " (");
+                    ms.Append(UserNameManager.getInstance().getUserName(last_vm.sender_id) + " (");
                 }
                 if (is_new)
                 {
@@ -243,7 +243,7 @@ namespace MxitTestApp
                         }
                         else
                         {
-                            receiver_list += UserNameManager.getUserName(participant.user_id);
+                            receiver_list += UserNameManager.getInstance().getUserName(participant.user_id);
                         }
                     }
                     else
@@ -254,7 +254,7 @@ namespace MxitTestApp
                         }
                         else
                         {
-                            receiver_list += ", " + UserNameManager.getUserName(participant.user_id);
+                            receiver_list += ", " + UserNameManager.getInstance().getUserName(participant.user_id);
                         }
                     }
                     count++;

@@ -51,7 +51,7 @@ namespace MxitTestApp
                         {
                                 friend_id = friend.id_a;
                         }
-                        user_name = UserNameManager.getUserName(friend_id);
+                        user_name = UserNameManager.getInstance().getUserName(friend_id);
                         if (friend_filter == "ALL" || user_name.ToUpper().StartsWith(friend_filter.ToUpper()))
                         {
                             MenuOptionItem m_o = new FriendRelationMenuOptionItem(

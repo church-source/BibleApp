@@ -56,7 +56,7 @@ namespace MxitTestApp
             {
                 user_session.setVariable(ORIGINAL_ACTION, entry);
                 friend_id = long.Parse(entry.Split('_')[1]);
-                String user_name = UserNameManager.getUserName(friend_id);
+                String user_name = UserNameManager.getInstance().getUserName(friend_id);
 
                 return new InputHandlerResult(
                     InputHandlerResult.CONF_PAGE_ACTION,
@@ -67,7 +67,7 @@ namespace MxitTestApp
             {
                 user_session.setVariable(ORIGINAL_ACTION, entry);
                 friend_id = long.Parse(entry.Split('_')[1]);
-                String user_name = UserNameManager.getUserName(friend_id);
+                String user_name = UserNameManager.getInstance().getUserName(friend_id);
 
                 return new InputHandlerResult(
                     InputHandlerResult.CONF_PAGE_ACTION,
@@ -83,14 +83,14 @@ namespace MxitTestApp
                     if (original_action.StartsWith(BLOCK_FRIEND))
                     {
                         friend_id = long.Parse(original_action.Split('_')[1]);
-                        String user_name = UserNameManager.getUserName(friend_id);
+                        String user_name = UserNameManager.getInstance().getUserName(friend_id);
                         user_session.friend_manager.blockFriend(friend_id);
                         user_session.setVariable(BLOCKED_FRIEND_NAME, user_name);
                     }else if(original_action.StartsWith(DELETE_FRIEND))
                     {
                         friend_id = long.Parse(original_action.Split('_')[1]);
                         user_session.friend_manager.deleteFriendRequest(friend_id);
-                        String user_name = UserNameManager.getUserName(friend_id);
+                        String user_name = UserNameManager.getInstance().getUserName(friend_id);
                         user_session.setVariable(DELETED_FRIEND_NAME, user_name);
                     }
 

@@ -124,8 +124,8 @@ namespace MxitTestApp
                 ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Refresh", MessageThreadHandler.REFRESH_THREAD));
 
 
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us, ms);
+                appendMessageConfig(true,  ms);
             }
             return ms;
             //return output;
@@ -140,7 +140,7 @@ namespace MxitTestApp
             }
             else
             {
-                receiver_list +=  UserNameManager.getUserName(sender_id);
+                receiver_list += UserNameManager.getInstance().getUserName(sender_id);
             }
             
                 
@@ -201,7 +201,7 @@ namespace MxitTestApp
             }
             IEnumerable<VerseMessage> tmp_list = messages.Reverse<VerseMessage>();
             addMessagesToMessageFromList(us, tmp_list, ms,vmt);
-            appendPaginateLinks(us, ref ms, messages.Count, MESSAGES_PER_PAGE);
+            appendPaginateLinks(us, ms, messages.Count, MESSAGES_PER_PAGE);
         }
 
 
@@ -209,7 +209,7 @@ namespace MxitTestApp
         //is on
         public override void appendPaginateLinks(
             UserSession us,
-            ref MessageToSend ms,
+            MessageToSend ms,
             int count,
             int count_per_page)
         {
@@ -305,7 +305,7 @@ namespace MxitTestApp
                         }
                         else
                         {
-                            ms.AppendLine(UserNameManager.getUserName(list.ElementAt(i).sender_id) + " said:", aColor, TextMarkup.Bold);
+                            ms.AppendLine(UserNameManager.getInstance().getUserName(list.ElementAt(i).sender_id) + " said:", aColor, TextMarkup.Bold);
                         }
 
                         ms.Append(list.ElementAt(i).message_text + " (" + DateUtils.RelativeDate(list.ElementAt(i).datetime_sent) + ")", aColor);
@@ -321,7 +321,7 @@ namespace MxitTestApp
                         }
                         else
                         {
-                            ms.AppendLine(UserNameManager.getUserName(list.ElementAt(i).sender_id) + " said:", TextMarkup.Bold);
+                            ms.AppendLine(UserNameManager.getInstance().getUserName(list.ElementAt(i).sender_id) + " said:", TextMarkup.Bold);
                         }
 
                         ms.Append(list.ElementAt(i).message_text + " (" + DateUtils.RelativeDate(list.ElementAt(i).datetime_sent) + ")");

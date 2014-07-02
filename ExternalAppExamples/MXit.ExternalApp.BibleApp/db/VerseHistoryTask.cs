@@ -10,56 +10,54 @@ using System.Threading;
 
 namespace MxitTestApp
 {
-    public class VerseHistoryTask
+    public class VerseTagTask
     {
-        private UserSession us { get; set; }
-        private UserProfile user_profile { get; set; }
-        private Verse start { get; set; }
-        private Verse end { get; set; }
+        private long user_id { get; set; }
+        private String start_verse { get; set; }
+        private String end_verse { get; set; }
         private DateTime datetime { get; set; }
-        private VerseHistoryRecord vhr { get; set; }
-        public VerseHistoryTask(
-            UserSession us, 
-            UserProfile user_profile,
-            Verse start,
-            Verse end,
+        private VerseTag vt { get; set; }
+        private int emotion_id { get; set; }
+        private String description { get; set; }
+
+        public VerseTagTask(
+            long user_id, 
+            int emotion_id,
+            String start_verse,
+            String end_verse,
             DateTime datetime,
-            VerseHistoryRecord vhr)
+            String description,
+            VerseTag vt)
         {
-            this.us = us;
-            this.user_profile = user_profile;
-            this.start = start;
-            this.end = end;
+            this.user_id = user_id;
+            this.emotion_id = emotion_id;
+            this.start_verse = start_verse;
+            this.end_verse = end_verse;
             this.datetime = datetime;
-            this.vhr = vhr;
+            this.vt = vt ;
         }
 
-        public void AddVerseToVerseHistory()
+        public void AddVerseTask()
         {
-            Thread t = new Thread(new ThreadStart(AddVerseToVerseHistoryDB));
+            Thread t = new Thread(new ThreadStart(AddVerseTaskToDB));
             t.Start();
         }
 
-        private void AddVerseToVerseHistoryDB()
+        private void AddVerseTaskToDB()
         {
             MySqlConnection conn = DBManager.getConnection();
             try
             {
                 conn.Open();
-                String verse_start_str = start.getVerseReference();
-                String verse_end_str;
-
-                if (end == null)
-                    verse_end_str = "NULL";
-                else
-                    verse_end_str = end.getVerseReference();
-
+                if (end_verse == null)
+                    end_verse = "";
+                
                 string sqlQuery =
-                    "INSERT INTO versehistory VALUES(NULL,'" + user_profile.id + "','" + us.session_id + "','" +
-                      datetime.ToString("yyyy-MM-dd HH:mm:ss") + "','" + verse_start_str + "','" + verse_end_str + "',0)";
+                    "INSERT INTO emotion_tag VALUES(NULL,'" + emotion_id + "','" + user_id + "','" +
+                      datetime.ToString("yyyy-MM-dd HH:mm:ss") + "','" + start_verse + "','" + end_verse+ "','"+description+"')";
                 MySqlCommand cmd = new MySqlCommand(sqlQuery, conn);
                 int output = cmd.ExecuteNonQuery();
-                vhr.id = cmd.LastInsertedId;
+                vt.id = cmd.LastInsertedId;
             }
             catch (Exception ex)
             {

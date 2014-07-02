@@ -16,6 +16,12 @@ namespace MxitTestApp
 {
     class MainMenuHandler : AInputHandler
     {
+
+        public override void init(MxitTestApp.UserSession us)
+        {
+            us.removeVariable(TaggedVersesHandler.TAGGED_VERSE_CURRENT_PAGE);
+        }
+
         public override InputHandlerResult handleInput(UserSession user_session, MessageReceived message_recieved)
         {
 

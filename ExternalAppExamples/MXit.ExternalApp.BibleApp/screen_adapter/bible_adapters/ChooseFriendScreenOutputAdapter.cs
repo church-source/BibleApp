@@ -66,12 +66,12 @@ namespace MxitTestApp
                         ms.Append(dmp.dynamic_set.getListEmptyMessage() + "\r\n");
                 }
                 appendCurrentSendList(us, ms);
-                addLinksToMessageFromList(us, dyn_options, ref ms);
-                appendPaginateLinks(us, ref ms, dyn_options.Count);
+                addLinksToMessageFromList(us, dyn_options,  ms);
+                appendPaginateLinks(us, ms, dyn_options.Count);
                 addQuickFilterLinksToMessageFromList(us, ms);
                 appendExtraCommandLinks(dmp.dynamic_set.getExtraCommandString(), ms);
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us, ms);
+                appendMessageConfig(true,  ms);
             }
             return ms;
             //return output;
@@ -80,7 +80,7 @@ namespace MxitTestApp
         public override void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms)
+            MessageToSend ms)
         {
             ms.AppendLine();
             int count = (us.current_menu_page * MenuDefinition.PAGE_ITEM_COUNT) + 1;
@@ -103,7 +103,7 @@ namespace MxitTestApp
                 if (recipient_list == null || (recipient_list != null && !recipient_list.Contains(long.Parse(an_option.display_text))))
                 {
 
-                    ms.Append(" " + UserNameManager.getUserName(long.Parse(an_option.display_text)) + " ");
+                    ms.Append(" " + UserNameManager.getInstance().getUserName(long.Parse(an_option.display_text)) + " ");
                     ms.Append(createMessageLink(MENU_LINK_NAME, "[+]", "ADD_" + an_option.display_text));
                     /*ms.Append(" ");
                     ms.Append(createMessageLink(MENU_LINK_NAME, "[-]", "REMOVE_" + an_option.display_text));*/
@@ -126,7 +126,7 @@ namespace MxitTestApp
                 {
                     for (int i = 0; i < recipient_list.Count; i++)
                     {
-                        ms.Append(UserNameManager.getUserName(recipient_list[i]) + " ");
+                        ms.Append(UserNameManager.getInstance().getUserName(recipient_list[i]) + " ");
                         ms.Append(createMessageLink(MENU_LINK_NAME, "[-]", "REMOVE_" + recipient_list[i]));
                         if (recipient_list.Count > 1 && (i != recipient_list.Count - 1))
                             ms.Append(", ");

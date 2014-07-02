@@ -26,7 +26,13 @@ namespace MxitTestApp
             ms.Append(MessageBuilder.Elements.CreateClearScreen());
             if (!mp.GetType().FullName.Equals("MxitTestApp.DynMenuPage"))//TODO: Should be constant
                 throw new Exception("Invalid menu page passed into getScreen method ");
-            
+
+            Boolean should_display_conf_message = displayMessage(us, ms, ihr);
+            if (should_display_conf_message)
+            {
+                return ms;
+            }
+
             DynMenuPage dmp = (DynMenuPage)mp;
             ms.Append(dmp.title + "\r\n",TextMarkup.Bold);
             if (ihr.action == InputHandlerResult.CONF_PAGE_ACTION
@@ -65,12 +71,12 @@ namespace MxitTestApp
                     if (empty_msg != null && empty_msg != "")
                         ms.Append(dmp.dynamic_set.getListEmptyMessage() + "\r\n");
                 }
-                addLinksToMessageFromList(us, dyn_options, ref ms);
-                appendPaginateLinks(us, ref ms, dyn_options.Count);
+                addLinksToMessageFromList(us, dyn_options,  ms);
+                appendPaginatedLinksForMenu(us, ms, dyn_options);
                 appendExtraCommandLinks(dmp.dynamic_set.getExtraCommandString(), ms);
-                appendBackMainLinks(us, ref ms);
+                appendBackMainLinks(us, ms);
             }
-            appendMessageConfig(true, ref ms);
+            appendMessageConfig(true, ms);
 
             return ms;
             //return output;
@@ -84,6 +90,11 @@ namespace MxitTestApp
                 ms.Append(createMessageLink(MENU_LINK_NAME, extra_commands, extra_commands.ToUpper()));
                 ms.Append("\r\n");
             }
+        }
+
+        protected virtual void appendPaginatedLinksForMenu(UserSession us, MessageToSend ms, List<MenuOptionItem> dyn_options)
+        {
+              appendPaginateLinks(us, ms, dyn_options.Count);
         }
     }
 }

@@ -72,7 +72,10 @@ namespace MXit.ExternalApp.Examples.Redirect
                 }
                 else
                 {
-                    ExternalAppApiComms.RedirectUser(messageReceived.CreateRedirectRequest("communityportal", "RecommendPage?ItemId=4221728"));
+                    RedirectRequest redirectRequest;
+                    redirectRequest = messageReceived.CreateRedirectRequest("mxit_recommend", "Recommend?service_name=4221728");
+                    //client.RedirectUser(redirectRequest);
+                    ExternalAppApiComms.RedirectUser(redirectRequest/*messageReceived.CreateRedirectRequest("communityportal", "RecommendPage?ItemId=4221728")*/);
                 }
             }
             catch (Exception e)
@@ -232,7 +235,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                     {
                         user_id = dvr.user_id;
                         //is_subscribed = Boolean.Parse((rdr[1]).ToString());
-                        user_name = UserNameManager.getUserName(dvr.id);
+                        user_name = UserNameManager.getInstance().getUserName(dvr.id);
                         messageToSend = new MessageToSend("", user_id, User.DeviceInfo.DefaultDevice);
                         messageToSend.MaySpool = true;
                         messageToSend.Append(MessageBuilder.Elements.CreateClearScreen());
@@ -265,7 +268,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                         messages.Add(messageToSend);
                         send_count++;
                         //after every 30 messages we wait a bit to let messags in queue to get sent
-                        if (send_count % 30 == 0)
+                        if (send_count % 40 == 0)
                         {
                             BatchJobData bjd = new BatchJobData();
                             bjd.engine = this;
@@ -273,7 +276,7 @@ namespace MXit.ExternalApp.Examples.Redirect
                             Thread thread = new Thread(sendBatchMessages);
                             Console.WriteLine("Spawning daily verse thread to send to batch of users, max user id = " + user_id);
                             thread.Start(bjd);
-                            Thread.Sleep(5000);
+                            Thread.Sleep(2000);
                             messages = new List<MessageToSend>();
                         }
                     }

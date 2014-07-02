@@ -56,7 +56,7 @@ namespace MxitTestApp
                 {
                     String friend_id = us.getVariable(RECIPIENT_ID);
                     long l_friend_id = long.Parse(friend_id);
-                    String user_name = UserNameManager.getUserName(l_friend_id);
+                    String user_name = UserNameManager.getInstance().getUserName(l_friend_id);
                     ms.Append("To: ");
                     ms.Append(user_name, TextMarkup.Bold);
                     ms.Append(" ");
@@ -110,8 +110,8 @@ namespace MxitTestApp
                     ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Send Message", NotifMessageSendHandler.SEND_MESSAGE));
 
             ms.AppendLine("");
-            appendBackMainLinks(us, ref ms);
-            appendMessageConfig(true, ref ms);
+            appendBackMainLinks(us, ms);
+            appendMessageConfig(true,  ms);
             return ms;
             //return output;
         }

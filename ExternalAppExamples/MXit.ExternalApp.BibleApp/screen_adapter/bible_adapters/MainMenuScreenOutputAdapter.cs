@@ -36,6 +36,12 @@ namespace MxitTestApp
             {
                 ms.Append(parseMessage(us, omp.message) + "\r\n");
             }
+            
+
+            ms.AppendLine("Refer a friend to the BibleApp on MXit by using the link below. ");
+            ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Spread The Word", MainMenuHandler.REFER_A_FRIEND));
+
+            ms.AppendLine();
 
             if (us.user_profile.is_suspended)
             {
@@ -91,22 +97,10 @@ namespace MxitTestApp
 
                 count++;
             }
-            appendBackMainLinks(us, ref ms);
-            appendMessageConfig(true, ref ms);
+            appendBackMainLinks(us,  ms);
+            appendMessageConfig(true, ms);
 
             ms.AppendLine(""); 
-            ms.AppendLine("");
-            UserColourTheme uct = UserColourTheme.getColourTheme(us.user_profile.user_profile_custom.colour_theme);
-            if (uct != null)
-            {
-                Color color = uct.getTipTextColour();
-                ms.AppendLine("Tip: To Refer a Friend click the below link. ", color);
-            }
-            else
-            {
-                ms.AppendLine("Tip: To Refer a Friend click the below link. ");
-            }
-            ms.AppendLine(createMessageLink(MENU_LINK_NAME, "Spread The Word", MainMenuHandler.REFER_A_FRIEND));
 
             ms.AppendLine("");
             ms.AppendLine("Shortcuts...", TextMarkup.Bold);
@@ -135,7 +129,7 @@ namespace MxitTestApp
 
             ms.AppendLine();
             ms.AppendLine();
-
+            UserColourTheme uct = UserColourTheme.getColourTheme(us.user_profile.user_profile_custom.colour_theme);
             if (uct != null)
             {
                 Color color = uct.getTipTextColour();

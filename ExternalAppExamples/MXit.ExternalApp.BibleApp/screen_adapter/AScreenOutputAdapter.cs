@@ -68,6 +68,12 @@ namespace MxitTestApp
                 return "";
         }
 
+        public String getEmotion(UserSession us, string emo_id)
+        {
+            return VerseTagManager.getInstance().getEmotionFromEmotionID(Int32.Parse(emo_id));
+        }
+
+
         //this is sort of hack, but the message functions should always have user session as first variable. 
         public String getCategoryName(UserSession us, string category_id)
         {
@@ -157,7 +163,7 @@ namespace MxitTestApp
         public virtual void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms)
+            MessageToSend ms)
         {
             int count = (us.current_menu_page * MenuDefinition.PAGE_ITEM_COUNT) + 1;
 
@@ -178,7 +184,7 @@ namespace MxitTestApp
         public virtual void addLinksToMessageFromList(
             UserSession us,
             List<MenuOptionItem> list,
-            ref MessageToSend ms,
+            MessageToSend ms,
             int count_per_page)
         {
             int count = (us.current_menu_page * count_per_page) + 1;
@@ -196,11 +202,18 @@ namespace MxitTestApp
             }
         }
 
+        /*adds refresh link on new line*/
+        public void appendRefreshLink(MessageToSend ms)
+        {
+            ms.Append(createMessageLink(MENU_LINK_NAME, "Refresh", "Refresh"));
+            ms.AppendLine();
+        }
+
         //this adds pagination links depending on the count passed into it and the current page the user
         //is on
         public void appendPaginateLinks(
             UserSession us,
-            ref MessageToSend ms,
+            MessageToSend ms,
             int count)
         {
             int cur_page_limit = 0;
@@ -227,7 +240,7 @@ namespace MxitTestApp
         //is on
         public virtual void appendPaginateLinks(
             UserSession us,
-            ref MessageToSend ms,
+            MessageToSend ms,
             int count,
             int count_per_page)
         {
@@ -267,7 +280,7 @@ namespace MxitTestApp
             }
         }
 
-        public void appendBackMainLinks(UserSession us, ref MessageToSend ms)
+        public void appendBackMainLinks(UserSession us, MessageToSend ms)
         {
             if (!us.current_menu_loc.Equals(MenuDefinition.ROOT_MENU_ID))
             {
@@ -339,7 +352,7 @@ namespace MxitTestApp
             ms.Append(chatScreenConfig);*/
         }
 
-        public void appendMessageConfig(bool clear_screen, ref MessageToSend ms)
+        public void appendMessageConfig(bool clear_screen,  MessageToSend ms)
         {
             /*IMessageElement chatScreenConfig;
             if (clear_screen)
@@ -364,8 +377,8 @@ namespace MxitTestApp
             {
                 ms.Append(MessageBuilder.Elements.CreateClearScreen());
                 ms.Append(ihr.message + "\r\n");
-                appendBackMainLinks(us, ref ms);
-                appendMessageConfig(true, ref ms);
+                appendBackMainLinks(us, ms);
+                appendMessageConfig(true, ms);
                 us.setVariable(AInputHandler.DISPLAY_MESSAGE , "Message sent");//you must be sure to remove this from hash table in handler. 
                 return true;
             }

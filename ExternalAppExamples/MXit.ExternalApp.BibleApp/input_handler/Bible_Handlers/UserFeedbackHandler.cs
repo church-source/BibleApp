@@ -85,7 +85,7 @@ namespace MxitTestApp
 
             String message_text = input;
             //String recip_id_s = "";
-            long recip_id = UserNameManager.getUserID(UserProfile.BIBLE_APP_USER_NAME);
+            long recip_id = UserNameManager.getInstance().getUserID(UserProfile.BIBLE_APP_USER_NAME);
             String start_verse = VerseMessageThread.NOTIFICATION_THREAD;
             String end_verse = VerseMessageThread.NOTIFICATION_THREAD;
             String subject = "User Feedback";

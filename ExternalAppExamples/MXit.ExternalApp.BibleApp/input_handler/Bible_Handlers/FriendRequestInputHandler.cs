@@ -63,7 +63,7 @@ namespace MxitTestApp
                 try
                 {
                     long result = user_session.friend_manager.addFriendRequest(friend_id);
-                    String user_name = UserNameManager.getUserName(friend_id);
+                    String user_name = UserNameManager.getInstance().getUserName(friend_id);
                     if (result == FriendManager.FRIEND_REQUEST_ALREADY_REQUESTED)
                     {
                         return new InputHandlerResult(

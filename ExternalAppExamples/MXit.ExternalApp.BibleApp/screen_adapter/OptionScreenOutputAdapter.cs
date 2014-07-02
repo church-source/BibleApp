@@ -43,8 +43,8 @@ namespace MxitTestApp
                 ms.Append(option.display_text + "\r\n");
                 count++;
             }
-            appendBackMainLinks(us, ref ms);
-            appendMessageConfig(true, ref ms);
+            appendBackMainLinks(us,  ms);
+            appendMessageConfig(true, ms);
             return ms;
             //return output;
         }

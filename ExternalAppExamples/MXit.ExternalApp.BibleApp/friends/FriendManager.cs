@@ -258,7 +258,7 @@ namespace MxitTestApp
                     user_id = rel.id_b;
                 else
                     user_id = rel.id_a;
-                String user_name = UserNameManager.getUserName(user_id);
+                String user_name = UserNameManager.getInstance().getUserName(user_id);
                 if (user_name != null && user_name.Length > 0)
                 {
                     tmp_start = user_name[0].ToString().ToUpper();

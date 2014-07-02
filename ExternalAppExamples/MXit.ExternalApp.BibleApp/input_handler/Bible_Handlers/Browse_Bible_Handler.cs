@@ -489,6 +489,13 @@ namespace MxitTestApp
                              MenuIDConstants.SEND_VERSE_MESSAGE_ID,
                              InputHandlerResult.DEFAULT_PAGE_ID);
             }
+            else if (TAG_VERSE.Equals(input.Trim().ToUpper()))
+            {
+                return new InputHandlerResult(
+                             InputHandlerResult.NEW_MENU_ACTION,
+                             MenuIDConstants.TAG_VERSE_ID,
+                             InputHandlerResult.DEFAULT_PAGE_ID);
+            }
             else if (".".Equals(input.Trim().ToUpper()))
             {
                 VerseSection vs = (VerseSection)us.getVariableObject("Browse.verse_section");
@@ -610,6 +617,7 @@ namespace MxitTestApp
 
         public const string ADD_TO_FAV = "ADD_TO_FAV";
         public const string SEND_TO_BUDDY = "SEND";
+        public const string TAG_VERSE = "TAG_VERSE";
 
         public const string BROWSE_CLEAR_SCREEN= "Browse.clear_screen";
     }

@@ -37,6 +37,8 @@ namespace MxitTestApp
         public const String BROWSE_MENU_ID = "12";
 
         public const String COLOUR_THEME_ID = "38_colour_theme";
+
+        public const String TAG_VERSE_ID = "41_tag_verse_emotions";
     }
 }
 

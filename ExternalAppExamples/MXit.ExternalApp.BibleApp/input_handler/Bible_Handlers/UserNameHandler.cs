@@ -71,7 +71,7 @@ namespace MxitTestApp
                 {
                     Console.WriteLine(e.StackTrace);
                     return new InputHandlerResult(
-                   "Your user name is invalid, please try again"); //invalid choice
+                   "Your user name is invalid or has been taken already, please try again."); //invalid choice
                 }
             }
 

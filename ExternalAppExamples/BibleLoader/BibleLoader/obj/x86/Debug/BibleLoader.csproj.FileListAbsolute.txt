@@ -1,0 +1,6 @@
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\bin\Debug\BibleLoader.exe
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\bin\Debug\BibleLoader.pdb
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\bin\Debug\MySql.Data.dll
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Debug\BibleLoader.exe
+C:\Users\rpillay\documents\visual studio 2010\Projects\BibleLoader\BibleLoader\obj\x86\Debug\BibleLoader.pdb

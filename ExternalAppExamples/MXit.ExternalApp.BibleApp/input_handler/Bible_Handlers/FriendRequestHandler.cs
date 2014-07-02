@@ -56,7 +56,7 @@ namespace MxitTestApp
             {
                 friend_id = long.Parse(entry.Split('_')[1]);
                 user_session.friend_manager.approveFriendRequest(friend_id);
-                String user_name = UserNameManager.getUserName(friend_id);
+                String user_name = UserNameManager.getInstance().getUserName(friend_id);
 
                 user_session.setVariable(APPROVED_FRIEND_NAME, user_name);
 
@@ -69,7 +69,7 @@ namespace MxitTestApp
             {
                 friend_id = long.Parse(entry.Split('_')[1]);
                 user_session.friend_manager.rejectFriendRequest(friend_id);
-                String user_name = UserNameManager.getUserName(friend_id);
+                String user_name = UserNameManager.getInstance().getUserName(friend_id);
 
                 user_session.setVariable(REJECTED_FRIEND_NAME, user_name);
                 return new InputHandlerResult(
